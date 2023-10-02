@@ -2,6 +2,7 @@
 :root {
   --color-primary: #442768;
   --color-secondary: #ff9211;
+  --color-muted : #333333;
   --text-dark-primary: #1c1c1c;
   --text-dark-secondary: #555;
   --text-light-primary: #fefefe;
@@ -23,7 +24,7 @@
 
 body {
   font-size: 16px;
-  font-family: "Inria Sans ", "Sans";
+  font-family: "Inria Sans" ,'Sans-serif";
 }
 
 h6,
@@ -51,3 +52,53 @@ h1 {
 }
 
 /* ===================================================================== */
+
+/* Styles for buttons */
+
+
+
+
+.btn-success{
+    --btn-bg-color:var(--color-success);
+}
+
+.btn-danger{
+
+    --btn-bg-color:var(--color-danger);
+
+}
+
+.btn-secondary{
+    --btn-bg-color:var(--color-secondary);
+    
+}
+
+.btn-primary{
+    --btn-bg-color:var(--color-primary);
+
+}
+
+.btn-muted{
+    --btn-bg-color:var(--color-muted);
+
+}
+
+.btn {
+    all: unset;
+    padding: 0.5em 1.75em;
+    cursor: pointer;
+    background-color: var(--btn-bg-color);
+    color : var(--text-light-primary);
+    transition: opacity 250ms ease-in-out;
+}
+
+
+.btn:hover{
+    background-color:var(--btn-bg-color);
+    opacity: .85;
+
+}
+
+
+
+  
