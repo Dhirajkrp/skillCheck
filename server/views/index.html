@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question API</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Question API</h2>
+    </header>
+
+    <section class="actions-tab">
+      <form action="" class="search-form" id="form">
+        <input
+          type="text"
+          name="data"
+          placeholder="Enter the question id or tag"
+          id="searchVal"
+          required
+        />
+        <select name="paramType" id="searchParam" required>
+          <option value="tag">Tag</option>
+          <option value="id">Id</option>
+        </select>
+        <input type="submit" value="Search" id="searchBtn" />
+      </form>
+
+      <div class="btn-group">
+        <button id="addBtn">Add Question</button>
+      </div>
+    </section>
+
+    <section class="question-container"></section>
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <form id="editForm">
+          <label for="editQuestion">Question:</label>
+          <input type="text" id="editQuestion" name="editQuestion" required />
+
+          <label for="editOptions">Options:</label>
+          <textarea
+            id="editOptions"
+            name="editOptions"
+            rows="4"
+            required
+          ></textarea>
+
+          <label for="editTags">Tags:</label>
+          <input type="text" id="editTags" name="editTags" />
+
+          <label for="editAnswer">Answer (Index):</label>
+          <input type="number" id="editAnswer" name="editAnswer" required />
+
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
