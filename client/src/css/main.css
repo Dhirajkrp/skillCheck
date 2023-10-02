@@ -1,0 +1,53 @@
+/* variables for the colours */
+:root {
+  --color-primary: #442768;
+  --color-secondary: #ff9211;
+  --text-dark-primary: #1c1c1c;
+  --text-dark-secondary: #555;
+  --text-light-primary: #fefefe;
+  --text-light-secondary: #ccc;
+  --color-success: #00c938;
+  --color-danger: #ee0d0d;
+}
+/* =================================================================== */
+
+/* some universal styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* ========================================================================== */
+
+/* setting up the font family and sizes */
+
+body {
+  font-size: 16px;
+  font-family: "Inria Sans ", "Sans";
+}
+
+h6,
+p {
+  font-size: 1rem;
+}
+h5 {
+  font-size: 1.125rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h1 {
+  font-size: 3.052rem;
+}
+
+/* ===================================================================== */
