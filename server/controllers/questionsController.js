@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const fsPromises = require("fs").promises;
 
+const Question = require("../model/Question");
+
 const data = {
   questions: require("../data/questions.json"),
   setQuestions: function (updated) {
@@ -18,11 +20,13 @@ status:
     404 , if there are no questions.
 */
 const getAllQuestions = async (req, res) => {
-  if (!data || !data.questions) {
-    return res.status(404).json({ message: "No questions available" });
+  try {
+    const result = await Question.find({});
+    return res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500);
   }
-
-  return res.status(200).json(data.questions);
 };
 
 /*
@@ -38,14 +42,12 @@ const getQuestionById = async (req, res) => {
   if (!questionID) {
     return res.status(400).json({ message: "id required" });
   }
-
-  const result = data.questions.filter((qeus) => qeus._id === +questionID);
-  if (result.length === 0) {
-    return res
-      .status(404)
-      .json({ message: `No question found for the id ${questionID}` });
+  try {
+    const question = await Question.find({ _id: questionID });
+    return res.status(200).json(question);
+  } catch (err) {
+    return res.status(500).json({ message: "Cannot resole the question ID" });
   }
-  return res.status(200).json(result);
 };
 
 /*
@@ -57,18 +59,41 @@ status:
     404 , if there is no question with the tag.
     400, if no tag was specified.
 */
-const getQuestionsByTag = (req, res) => {
+const getQuestionsByTag = async (req, res) => {
   const { tagName: tag } = req.params;
-
   if (!tag) {
     return res.status(400).json({ message: "tag required" });
   }
-  const result = data.questions.filter((ques) => ques.tags.includes(tag));
-
-  if (result.length === 0) {
-    return res.status(404).json({ message: `No questions found for : ${tag}` });
+  try {
+    const raw = await Question.find({});
+    const result = raw.filter((ques) => ques.tags.includes(tag));
+    return res.status(200).json(result);
+  } catch (err) {
+    return res.status(500).json({ message: "Cannot resole the tag" });
   }
-  return res.status(200).json(result);
+};
+/*
+function to get questions based on language :
+parameters :
+    language: string
+status:
+    200, success , response with array of questions.
+    404 , if there is no question with the tag.
+    400, if no tag was specified.
+*/
+const getQuestionsByLanguage = async (req, res) => {
+  const { language } = req.params;
+  if (!language) {
+    return res.status(400).json({ message: "language required" });
+  }
+  try {
+    console.log(language);
+    const result = await Question.find({ language: language });
+    return res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500);
+  }
 };
 
 /*
@@ -84,11 +109,15 @@ status:
     400 , bad request , if some values are missing.
 */
 const createQuestion = async (req, res) => {
-  let { question, options, answer, tags, contentType } = req.body;
+  let { question, language, options, answer, tags, contentType } = req.body;
 
   // validating all the input values before adding to the database.
   if (!question) {
     return res.status(400).json({ message: "Question is required" });
+  }
+
+  if (!language) {
+    return res.status(400).json({ message: "language is required" });
   }
 
   if (!options || !Array.isArray(options)) {
@@ -118,23 +147,17 @@ const createQuestion = async (req, res) => {
     };
   }
 
-  const newQuestion = {
-    _id: data.questions.slice(-1)[0]._id + 1 || 1,
+  const data = {
     question,
+    language,
     options,
     answer,
     tags,
     contentType,
   };
 
-  data.setQuestions([...data.questions, newQuestion]);
-
-  await fsPromises.writeFile(
-    path.join(__dirname, "..", "data", "questions.json"),
-    JSON.stringify(data.questions),
-    "utf8"
-  );
-
+  const newQuestion = new Question(data);
+  await newQuestion.save();
   return res.status(201).json(newQuestion);
 };
 
@@ -145,36 +168,22 @@ parameters :
 status:
     204, success , no content to send back.
     404 , if there is no question with the id.
+    500 , for internal server error.
 */
 const deleteQuestion = async (req, res) => {
   const { id: questionID } = req.params;
 
-  if (!questionID) {
-    return res.status(400).json({ message: `Id required` });
+  try {
+    const result = await Question.findOneAndDelete({ _id: questionID });
+    if (!result) {
+      return res
+        .status(404)
+        .json({ message: `No question found for the id : ${questionID}` });
+    }
+    return res.sendStatus(204);
+  } catch (err) {
+    return res.sendStatus(500);
   }
-
-  const result = data.questions.filter((ques) => ques._id === +questionID);
-  if (result.length === 0) {
-    return res
-      .status(404)
-      .json({ message: `No question found for the id ${questionID}` });
-  }
-
-  // exculde the question having the given question id.
-  const filteredQuestions = data.questions.filter(
-    (ques) => ques._id !== +questionID
-  );
-
-  data.setQuestions(filteredQuestions);
-
-  //updating the file with the filtered question.
-  await fsPromises.writeFile(
-    path.join(__dirname, "..", "data", "questions.json"),
-    JSON.stringify(data.questions),
-    "utf8"
-  );
-
-  return res.sendStatus(204);
 };
 
 /*
@@ -192,34 +201,31 @@ status:
 */
 const updateQuestion = async (req, res) => {
   const { id: questionID } = req.params;
-  const { question, options, answer, tags, contentType } = req.body;
+  const { question, language, options, answer, tags, contentType } = req.body;
 
-  if (!questionID) {
-    return res.status(400).json({ message: `Id required` });
+  let currentQuestion = {};
+  try {
+    currentQuestion = await Question.find({ _id: questionID });
+  } catch (err) {
+    return res
+      .status(401)
+      .json({ message: `Cannot resole the question ID : ${questionID}` });
   }
 
-  const currentQuestion = data.questions.find(
-    (ques) => ques._id === +questionID
-  );
   if (!currentQuestion) {
     return res
       .status(404)
       .json({ message: `No question found for the id ${questionID}` });
   }
 
-  if (!question && !options && !answer && !tags && !contentType) {
+  if (!questionID) {
+    return res.status(400).json({ message: `Id required` });
+  }
+
+  if (!question && !language && !options && !answer && !tags && !contentType) {
     return res.status(400).json({ message: "No fields specified for updates" });
   }
 
-  //validate the new data
-  // if (question) {
-  //   if (typeof quetion !== String || quetion.length < 5) {
-  //     return res
-  //       .status(400)
-  //       .json({ message: "Question should be a string ,with min length 5." });
-  //   }
-
-  // }
   if (options) {
     if (!Array.isArray(options) || options.length < 2) {
       return res
@@ -227,7 +233,6 @@ const updateQuestion = async (req, res) => {
         .json({ message: "Options should be array with atleast 2 elements." });
     }
   }
-
   if (tags) {
     if (!Array.isArray(tags) || tags.length < 1) {
       return res
@@ -238,32 +243,37 @@ const updateQuestion = async (req, res) => {
 
   //creating the updating question
   const updatedQuestion = {
-    _id: parseInt(questionID),
+    _id: questionID,
     question: question || currentQuestion.question,
+    language: language || currentQuestion.language,
     options: options || currentQuestion.options,
     answer: answer == 0 ? answer : answer || currentQuestion.answer,
     tags: tags || currentQuestion.tags,
     contentType: contentType || currentQuestion.contentType,
   };
 
-  //updating the file and questions array.
+  let newQuestion = {};
+  try {
+    newQuestion = await Question.findOneAndUpdate(
+      { _id: questionID },
+      updatedQuestion,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+  } catch (err) {
+    console.log(err);
+    return res.status(401).json({ message: err.message });
+  }
 
-  const otherQuestions = data.questions.filter(
-    (ques) => ques._id !== +questionID
-  );
+  if (!newQuestion) {
+    return res
+      .status(404)
+      .json({ message: `No question found for the id ${questionID}` });
+  }
 
-  data.setQuestions([...otherQuestions, updatedQuestion]);
-
-  //sorting the array based on id after updating the question.
-  data.questions.sort((a, b) => a._id - b._id);
-
-  await fsPromises.writeFile(
-    path.join(__dirname, "..", "data", "questions.json"),
-    JSON.stringify(data.questions),
-    "utf8"
-  );
-
-  return res.status(202).json(updatedQuestion);
+  return res.status(202).json(newQuestion);
 };
 
 module.exports = {
@@ -273,4 +283,5 @@ module.exports = {
   deleteQuestion,
   updateQuestion,
   getQuestionsByTag,
+  getQuestionsByLanguage,
 };

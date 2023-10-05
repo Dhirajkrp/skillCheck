@@ -6,6 +6,7 @@ const {
   deleteQuestion,
   updateQuestion,
   getQuestionsByTag,
+  getQuestionsByLanguage,
 } = require("../controllers/questionsController");
 const router = express.Router();
 
@@ -18,5 +19,7 @@ router
   .delete(deleteQuestion);
 
 router.route("/tag/:tagName").get(getQuestionsByTag);
+
+router.route("/lang/:language").get(getQuestionsByLanguage);
 
 module.exports = router;
