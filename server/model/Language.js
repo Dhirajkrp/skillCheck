@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let language = new Schema({
-  name:{
-    type:String
+  name: {
+    required: true,
+    type: String,
   },
-  topic:{
-    type:[String]
-  }
+  topics: {
+    type: [String],
+    required: true,
+  },
 });
 
-
-
-module.exports = mongoose.model("lang", language);
+module.exports = mongoose.model("Language", language);

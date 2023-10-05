@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
+
+require("dotenv").config();
+const connectDB = require("./db/connect");
 const PORT = process.env.PORT || 3500;
 
 const questionRoutes = require("./routes/questionRoutes");
+const languageRoutes = require("./routes/languageRoute");
 
 const path = require("path");
 
@@ -19,6 +23,18 @@ app.get("^/$|index(.html)?", (req, res) => {
 
 app.use("/api/questions", questionRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server Running on port ${PORT}`);
-});
+app.use("/api/languages", languageRoutes);
+
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    app.listen(PORT, () => {
+      console.log(`Server Running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.log(`Something went wrong :${err}`);
+    process.exit(1);
+  }
+};
+
+start();
