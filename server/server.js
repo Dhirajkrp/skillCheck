@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3500;
 
 const questionRoutes = require("./routes/questionRoutes");
 const languageRoutes = require("./routes/languageRoutes");
+const companyRoutes = require("./routes/companyRoutes");
 
 const path = require("path");
 
@@ -24,6 +25,8 @@ app.get("^/$|index(.html)?", (req, res) => {
 app.use("/api/questions", questionRoutes);
 
 app.use("/api/languages", languageRoutes);
+
+app.use("/api/companies", companyRoutes);
 
 const start = async () => {
   try {
