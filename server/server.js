@@ -6,7 +6,7 @@ const connectDB = require("./db/connect");
 const PORT = process.env.PORT || 3500;
 
 const questionRoutes = require("./routes/questionRoutes");
-const languageRoutes = require("./routes/languageRoute");
+const languageRoutes = require("./routes/languageRoutes");
 
 const path = require("path");
 
