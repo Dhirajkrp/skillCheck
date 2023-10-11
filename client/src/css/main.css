@@ -1,6 +1,6 @@
 /* variables for the colours */
 :root {
-  --color-primary: #442768;
+  --color-primary: #141329;
   --color-secondary: #ff9211;
   --color-muted : #333333;
   --text-dark-primary: #1c1c1c;
@@ -16,7 +16,9 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
+
 
 /* ========================================================================== */
 
@@ -99,6 +101,43 @@ h1 {
 
 }
 
+/* ======styles for the page layout============== */
+
+.page-layout{
+
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;  
+}
+
+.sidebar{
+  flex:1;
+  background-color: var(--color-primary);
+}
 
 
-  
+.content{
+  flex:5;
+  background-color: blue;
+
+}
+
+.outlet{
+  background-color: white;
+  height: 90vh;
+  overflow-y: scroll;
+
+}
+
+.appbar{
+  height: 10vh;
+  background-color: yellow;
+
+}
+
+.main{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}

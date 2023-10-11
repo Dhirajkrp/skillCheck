@@ -1,15 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./css/main.css";
-import "./App.css";
+import Dashboard from "./pages/userPages/Dashboard";
+import Companies from "./pages/userPages/Companies";
+import Languages from "./pages/userPages/Languages";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h2>Hello My Gorgeous Friends :)</h2>
+      <Routes>
+        <Route path="/user/dashboard" element={<Dashboard />} />
+        <Route path="/user/companies" element={<Companies />} />
+        <Route path="/user/Languages" element={<Languages />} />
+      </Routes>
     </>
   );
 }
