@@ -1,0 +1,21 @@
+.appbar {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  padding-inline: 2em;
+  justify-content: space-between;
+}
+
+.user-card {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.user-icon {
+  display: block;
+  height: 32px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}

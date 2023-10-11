@@ -20,6 +20,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/userPages/Dashboard.jsx";
 import Companies from "./pages/userPages/Companies.jsx";
 import Languages from "./pages/userPages/Languages.jsx";
+import Report from "./pages/userPages/Report.jsx";
 
 //editor routes
 import EditorDashboard from "./pages/editorPages/EditorDashboard.jsx";
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
         <Route path="" element={<Dashboard />} />
         <Route path="languages" element={<Languages />} />
         <Route path="companies" element={<Companies />} />
+        <Route path="reports" element={<Report />} />
       </Route>
 
       <Route path="editor">

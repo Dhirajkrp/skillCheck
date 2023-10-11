@@ -27,7 +27,7 @@ function UserRoutes() {
   return (
     <>
       <div className="page-layout">
-        <div className="sidebar">
+        <div className="navbar">
           <Navbar />
         </div>
 
