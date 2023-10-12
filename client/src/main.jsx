@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
+import "./css/main.css";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -55,7 +56,7 @@ const router = createBrowserRouter(
         <Route path="reports" element={<Report />} />
       </Route>
 
-      <Route path="editor">
+      <Route path="/editor">
         <Route path="dashboard" element={<EditorDashboard />} />
         <Route path="languages" element={<EditLanguages />} />
         <Route path="companies" element={<EditCompanies />} />
