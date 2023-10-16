@@ -27,19 +27,11 @@ import Report from "./pages/userPages/Report.jsx";
 import EditorDashboard from "./pages/editorPages/EditorDashboard.jsx";
 import EditCompanies from "./pages/editorPages/EditCompanies.jsx";
 import EditLanguages from "./pages/editorPages/EditLanguages";
+import EditQuestions from "./pages/editorPages/EditQuestions";
+import AddQuestion from "./pages/editorPages/AddQuestion";
 
-import UserRoutes from "./routes/UserRoutes.jsx";
-import EditorRoutes from "./routes/EditorRoutes.jsx";
-// const router = {
-//   path :'/',
-//   element : <App/>,
-//   chilldren :[
-//     {
-//       path: "",
-//       element: <Home/>
-//     }
-//   ]
-// }
+import UserRoutes from "./layouts/UserLayout.jsx";
+import EditorLayout from "./layouts/EditorLayout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,10 +48,12 @@ const router = createBrowserRouter(
         <Route path="reports" element={<Report />} />
       </Route>
 
-      <Route path="/editor">
-        <Route path="dashboard" element={<EditorDashboard />} />
+      <Route path="/editor" element={<EditorLayout />}>
+        <Route path="" element={<EditorDashboard />} />
         <Route path="languages" element={<EditLanguages />} />
         <Route path="companies" element={<EditCompanies />} />
+        <Route path="questions" element={<EditQuestions />} />
+        <Route path="addQuestion" element={<AddQuestion />} />
       </Route>
     </>
   )
