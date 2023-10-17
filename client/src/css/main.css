@@ -1,6 +1,6 @@
 /* variables for the colours */
 :root {
-  --color-primary: #141329;
+  --color-primary: #211536;
   --color-secondary: #ff9211;
   --color-muted : #333333;
   --text-dark-primary: #1c1c1c;
@@ -91,15 +91,11 @@ h1 {
     cursor: pointer;
     background-color: var(--btn-bg-color);
     color : var(--text-light-primary);
-    transition: opacity 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 
-.btn:hover{
-    background-color:var(--btn-bg-color);
-    opacity: .85;
 
-}
 
 /* ======styles for the page layout============== */
 

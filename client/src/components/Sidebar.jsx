@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../css/navbar.css";
+import "../css/sidebar.css";
 
 const Sidebar = ({ routes }) => {
   return (
     <>
-      <div className="navbar-header">
-        <span className="navbar-logo">Logo</span>
+      <div className="sidebar-header">
+        <span className="sidebar-logo">Logo</span>
       </div>
       <ul className="nav-links">
         {routes.map((route) => {
