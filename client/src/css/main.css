@@ -118,27 +118,14 @@ h1 {
 
 }
 
-.outlet{
-  background-color: white;
+.main{
   height: 90vh;
-  overflow-y: scroll;
-
-}
-
-
-.main > div{
-  min-height: 90vh;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3em;
-}
-
-.page-container{
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  overflow-y: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size:2rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 2em;
+  padding-inline:2em;
+  padding-block-end: 2em;
 }

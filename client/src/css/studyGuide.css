@@ -1,0 +1,46 @@
+.language-intro {
+  display: flex;
+  height: 20vh;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 3em;
+}
+
+.language-image {
+  height: 20vh;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: rgb(232, 244, 199);
+}
+
+.language-image > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  object-fit: contain;
+}
+
+th {
+  text-align: left;
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+th,
+td {
+  padding: 0.3em 0.9em;
+}
+
+td > a {
+  text-decoration: underline;
+}
+
+tr:nth-of-type(2n) {
+  background-color: #ddd;
+}
+
+h5 {
+  margin-top: 2em;
+}
