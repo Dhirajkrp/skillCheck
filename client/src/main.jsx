@@ -22,6 +22,7 @@ import Dashboard from "./pages/userPages/Dashboard.jsx";
 import Companies from "./pages/userPages/Companies.jsx";
 import Languages from "./pages/userPages/Languages.jsx";
 import StudyGuide from "./pages/userPages/StudyGuide.jsx";
+import CompanyGuide from "./pages/userPages/CompanyGuide.jsx";
 import Report from "./pages/userPages/Report.jsx";
 
 //editor routes
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
         <Route path="languages" element={<Languages />} />
         <Route path="language/:langID" element={<StudyGuide />} />
         <Route path="companies" element={<Companies />} />
+        <Route path="company/:companyID" element={<CompanyGuide />} />
         <Route path="reports" element={<Report />} />
       </Route>
 
