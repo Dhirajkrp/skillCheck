@@ -7,8 +7,6 @@ import { langs } from "../../assets/languages";
 function StudyGuide() {
   let { langID } = useParams();
   const language = langs.filter((lang) => lang._id === langID)[0];
-
-  console.log(language);
   return (
     <>
       <div className="language-intro">
