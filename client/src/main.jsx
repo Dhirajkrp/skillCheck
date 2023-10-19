@@ -34,6 +34,8 @@ import AddQuestion from "./pages/editorPages/AddQuestion";
 
 import UserRoutes from "./layouts/UserLayout.jsx";
 import EditorLayout from "./layouts/EditorLayout.jsx";
+import TakeTest from "./pages/userPages/TakeTest.jsx";
+import Test from "./pages/userPages/Tests.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +44,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/test" element={<Test />} />
 
       <Route path="/user" element={<UserRoutes />}>
         <Route path="" element={<Dashboard />} />
@@ -50,6 +53,7 @@ const router = createBrowserRouter(
         <Route path="companies" element={<Companies />} />
         <Route path="company/:companyID" element={<CompanyGuide />} />
         <Route path="reports" element={<Report />} />
+        <Route path="take-test" element={<TakeTest />} />
       </Route>
 
       <Route path="/editor" element={<EditorLayout />}>

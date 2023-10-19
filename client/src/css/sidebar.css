@@ -40,3 +40,14 @@
 .nav-links > li:hover {
   background-color: rgba(var(--color-primary), 0.07);
 }
+
+/* style for questions sidebar */
+
+.questions-icon-container {
+  list-style: none;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}

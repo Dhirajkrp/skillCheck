@@ -27,7 +27,7 @@ function UserRoutes() {
     },
     {
       name: "Take a Test",
-      path: "/test",
+      path: "/user/take-test",
     },
   ];
 
