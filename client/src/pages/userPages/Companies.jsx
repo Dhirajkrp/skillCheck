@@ -2,6 +2,7 @@ import React from "react";
 import CompanyCard from "../../components/CompanyCard";
 import "../../css/LanguageCard.css";
 
+//database fetch using axios
 import { companies } from "../../assets/companies";
 
 function Companies() {

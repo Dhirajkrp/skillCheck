@@ -7,6 +7,7 @@ function TakeTest() {
   const [selectedOption, setSelectedOption] = useState("");
   const [testDuration, setTestDuration] = useState("");
 
+  //databse fetch
   const languages = ["java", "SQL", "JavaScript"];
   const companies = ["GrapeCity", "Cvent", "Nagarro"];
 

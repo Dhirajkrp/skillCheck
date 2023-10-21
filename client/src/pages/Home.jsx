@@ -1,4 +1,4 @@
-import MovingSlider from "./OwlCarousel";
+import MovingSlider from "../components/OwlCarousel";
 import "../css/Home.css";
 import Footer from "./Footer";
 

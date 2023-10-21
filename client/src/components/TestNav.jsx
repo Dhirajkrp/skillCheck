@@ -1,6 +1,6 @@
 import React from "react";
 
-function TestNav({ questions }) {
+function TestNav({ questions, setQuestion }) {
   return (
     <>
       <div className="sidebar-header">
@@ -10,7 +10,12 @@ function TestNav({ questions }) {
         {questions.map((question) => {
           return (
             <li key={question._id} index={question.index}>
-              <button className="question-index-btn">{question.index}</button>
+              <button
+                className="question-index-btn"
+                onClick={() => setQuestion(question.index)}
+              >
+                {question.index}{" "}
+              </button>
             </li>
           );
         })}

@@ -2,6 +2,7 @@ import React from "react";
 import LanguageCard from "../../components/LanguageCard";
 import "../../css/LanguageCard.css";
 
+//database fetch using axios
 import { langs } from "../../assets/languages";
 
 function Languages() {
