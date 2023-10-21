@@ -1,0 +1,59 @@
+.footer {
+    background-color: #442768; 
+    color: #fff; 
+    padding: 20px 0; 
+    margin-left:0px;
+    margin-right:0px;
+  }
+  
+  .container {
+    max-height:100vh;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 15px; 
+  }
+  
+ h4 {
+    color: #f0f0f0; /* Heading text color */
+    margin-bottom: 15px; /* Add space below the heading */
+  }
+  
+  
+  /* Style for contact information */
+  p {
+    margin: 0;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width:768px) {
+    .footer {
+      text-align: center; /* Center align the content on smaller screens */
+    }
+    
+    .col-md-4 {
+      margin-bottom: 30px; /* Add space between columns on smaller screens */
+    }
+  }
+
+#Us{
+    font-size:20px;   
+    padding:0px;
+    /* border:2px solid black; */
+
+}
+
+#l1{
+    margin-right:20px;
+    color:white;
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+#desc{
+    font-family:"Inria Sans" ,"Sans-serif";
+}
+
+.col-md-4{
+  margin-left:85px;
+  margin-right:50px;
+}
