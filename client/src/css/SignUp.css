@@ -1,0 +1,75 @@
+
+ 
+ .signup {
+    height:100vh;
+    width:100%;
+     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+.signup-container{
+    background-image:url("Login page.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+    color:white;
+    opacity: 0.8;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width:440px;
+    font-size:30px;
+}
+
+ #register{
+    font-size:30px;
+    margin-bottom:14px;
+    color:white;
+ }
+ 
+ .label{
+    display: block;
+    font-size: larger;
+    /* background-color:black; */
+    color:white;
+    font-size:20px;
+    padding: 5px;
+    }
+    
+    .input{
+    font-size:20px;
+    padding: 5px;
+    margin: 2px;
+    }
+
+    .btn{
+        cursor: pointer;
+        font-size:15px;
+        background-color:white;
+        border: 1px solid #442768;
+        color:black;
+        padding: 10px 20px;
+        margin-top: 10px;
+        
+    }
+
+    .btn:hover{
+        background-color: black;
+        color:white;
+    }
+    
+    .messages{
+    display: flex;
+    justify-content: center;
+    }
+    
+    .error{
+    display: block;
+    color: red;
+    width: fit-content;
+    font-size: 7px;
+    }
+    
+    .success{
+    display: block;
+    color: green;
+    width: fit-content;
+    font-size:10px;
+    }
