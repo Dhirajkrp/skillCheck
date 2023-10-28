@@ -1,7 +1,6 @@
 import React from "react";
 
 function TestNav({ questions, dispatch }) {
-  console.log(questions);
   return (
     <>
       <div className="sidebar-header">

@@ -72,6 +72,11 @@ function Test() {
           isAnswered: state.questions.at(currIndex).isAnswered,
           answer: state.questions.at(currIndex).selectedOption,
         };
+      case "submitTest":
+        return {
+          ...state,
+          status: "finished",
+        };
       default:
         throw new Error("Not a valid action for the reducer");
     }
@@ -83,12 +88,14 @@ function Test() {
     <>
       <div className="page-layout">
         <div className="navbar">
-          <TestNav questions={state.questions} dispatch={dispatch} />
+          {state.status === "active" && (
+            <TestNav questions={state.questions} dispatch={dispatch} />
+          )}
         </div>
 
         <div className="content">
           <div className="appbar">
-            <AppbarTest />
+            <AppbarTest dispatch={dispatch} />
           </div>
           <div className="main">
             {state.status === "active" && (

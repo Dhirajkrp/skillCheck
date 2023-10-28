@@ -1,7 +1,9 @@
 import React from "react";
 
 function TestReport({ questions }) {
-  const score = questions.fliter((ques) => ques.answer === selectedOption);
+  const score = questions.filter(
+    (ques) => ques.answer === ques.selectedOption
+  ).length;
   return <div>Your score is : {score} </div>;
 }
 
