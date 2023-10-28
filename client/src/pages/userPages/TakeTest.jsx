@@ -8,7 +8,7 @@ function TakeTest() {
   const [testDuration, setTestDuration] = useState("");
 
   //databse fetch
-  const languages = ["java", "SQL", "JavaScript"];
+  const languages = ["Java", "SQL", "JavaScript"];
   const companies = ["GrapeCity", "Cvent", "Nagarro"];
 
   return (

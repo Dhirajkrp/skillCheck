@@ -1,10 +1,13 @@
 import React from "react";
 import "../../css/appbar.css";
+import Timer from "./Timer";
 
-function AppbarTest({ dispatch }) {
+function AppbarTest({ dispatch, secondsRemaining }) {
   return (
     <>
-      <span>page name</span>
+      <span>
+        <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+      </span>
       <div className="user-card">
         <button
           className="btn-primary"

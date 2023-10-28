@@ -1,11 +1,13 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useLocation } from "react-router-dom";
+import { reducer, initialState } from "../../reducer/TestReducer";
 
-import { questions } from "../../assets/questions";
 import AppbarTest from "../../components/test-components/AppbarTest";
 import QuestionCard from "../../components/test-components/QuestionCard";
 import TestNav from "../../components/test-components/TestNav";
 import TestReport from "../../components/test-components/TestReport";
+import StartPage from "../../components/test-components/StartPage";
+import Loader from "../../components/test-components/Loader";
 
 function Test() {
   //getting the information about the test
@@ -15,90 +17,45 @@ function Test() {
   const topic = searchParams.get("option");
   const testDuration = searchParams.get("duration");
 
-  //fetch the questions from the database to the questions variable.
-  const questionList = questions
-    .filter((ques) => ques.tags.includes(topic))
-    .map((ques) => {
-      return {
-        ...ques,
-        isAnswered: false,
-        selectedOption: null,
-      };
-    });
-
-  const initialState = {
-    questions: questionList,
-    index: 0,
-    answer: null,
-    isAnswered: false,
-    status: "active",
-  };
-
-  const numQuestions = questionList.length;
-
-  const reducer = function (state, action) {
-    let currIndex;
-    switch (action.type) {
-      case "setQuestion":
-        currIndex = action.payload;
-        return {
-          ...state,
-          index: currIndex,
-          isAnswered: state.questions.at(currIndex).isAnswered,
-          answer: state.questions.at(currIndex).selectedOption,
-        };
-      case "setAnswer":
-        state.questions.at(state.index).isAnswered = true;
-        state.questions.at(state.index).selectedOption = action.payload;
-        return {
-          ...state,
-          answer: state.questions.at(state.index).selectedOption,
-          isAnswered: true,
-        };
-
-      case "nextQuestion":
-        currIndex = state.index + 1;
-        return {
-          ...state,
-          index: currIndex,
-          isAnswered: state.questions.at(currIndex).isAnswered,
-          answer: state.questions.at(currIndex).selectedOption,
-        };
-      case "prevQuestion":
-        currIndex = state.index - 1;
-        return {
-          ...state,
-          index: currIndex,
-          isAnswered: state.questions.at(currIndex).isAnswered,
-          answer: state.questions.at(currIndex).selectedOption,
-        };
-      case "submitTest":
-        return {
-          ...state,
-          status: "finished",
-        };
-      default:
-        throw new Error("Not a valid action for the reducer");
-    }
-  };
+  // defining the api route based on the test information
+  let uri;
+  if (testType === "language") {
+    uri = `http://localhost:3500/api/questions/lang/${topic}`;
+  } else {
+    uri = `http://localhost:3500/api/companies/test/${topic}`;
+  }
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    fetch(uri)
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: "dataFetched", payload: data }))
+      .catch((err) => dispatch({ type: "error" }));
+  }, []);
+
+  const numQuestions = state.questions.length;
 
   return (
     <>
-      <div className="page-layout">
-        <div className="navbar">
-          {state.status === "active" && (
-            <TestNav questions={state.questions} dispatch={dispatch} />
-          )}
-        </div>
+      {/* the loader component will be displayed when we fetch the data from the database */}
+      {state.status === "loading" && <Loader />}
+      {/* the start page will be displayed when the data is fetched and everything is set to go. , this will also have all the instructions for the test */}
+      {state.status === "ready" && <StartPage dispatch={dispatch} />}
 
-        <div className="content">
-          <div className="appbar">
-            <AppbarTest dispatch={dispatch} />
+      {/* Once the user clicks on the start test button then the test page will be displayed */}
+      {state.status === "active" && (
+        <div className="page-layout">
+          <div className="navbar">
+            <TestNav questions={state.questions} dispatch={dispatch} />
           </div>
-          <div className="main">
-            {state.status === "active" && (
+          <div className="content">
+            <div className="appbar">
+              <AppbarTest
+                dispatch={dispatch}
+                secondsRemaining={state.secondsRemaining}
+              />
+            </div>
+            <div className="main">
               <QuestionCard
                 index={state.index}
                 question={state.questions.at(state.index)}
@@ -106,14 +63,14 @@ function Test() {
                 dispatch={dispatch}
                 numQuestions={numQuestions}
               />
-            )}
-
-            {state.status === "finished" && (
-              <TestReport questions={state.questions} />
-            )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
+      {/* This section will be displayed when the user clicks on the submit button */}
+      {state.status === "finished" && (
+        <TestReport questions={state.questions} />
+      )}
     </>
   );
 }

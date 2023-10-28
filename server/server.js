@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 require("dotenv").config();
 const connectDB = require("./db/connect");
@@ -13,6 +14,9 @@ const path = require("path");
 
 // applying middlewares
 app.use(express.json());
+
+//using cors
+app.use(cors());
 
 // setting up the static files
 app.use(express.static("./public"));
