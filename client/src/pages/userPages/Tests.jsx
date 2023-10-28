@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { useLocation } from "react-router-dom";
 
 import { questions } from "../../assets/questions";
-import Appbar from "../../components/Appbar";
-import QuestionCard from "../../components/QuestionCard";
-import TestNav from "../../components/TestNav";
+import AppbarTest from "../../components/test-components/AppbarTest";
+import QuestionCard from "../../components/test-components/QuestionCard";
+import TestNav from "../../components/test-components/TestNav";
+import TestReport from "../../components/test-components/TestReport";
 
 function Test() {
+  //getting the information about the test
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  TestNav;
   const testType = searchParams.get("type");
   const topic = searchParams.get("option");
   const testDuration = searchParams.get("duration");
@@ -17,95 +18,96 @@ function Test() {
   //fetch the questions from the database to the questions variable.
   const questionList = questions
     .filter((ques) => ques.tags.includes(topic))
-    .map((ques, i) => {
+    .map((ques) => {
       return {
         ...ques,
-        index: i + 1,
-        isAttempted: false,
+        isAnswered: false,
         selectedOption: null,
       };
     });
-  //setting up the initial states.
 
-  const [currentQuestion, setCurrentQuestion] = useState({});
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [answers, setAnswers] = useState([]);
-
-  const handleQuestionChange = (index) => {
-    setCurrentIndex(index);
-    setCurrentQuestion(questionList[currentIndex]);
-    setSelectedOption(currentQuestion.selectedOption);
+  const initialState = {
+    questions: questionList,
+    index: 0,
+    answer: null,
+    isAnswered: false,
+    status: "active",
   };
 
-  const saveQuestion = () => {
-    if (selectedOption === null) return;
-    questionList[currentIndex].selectedOption = selectedOption;
-    questionList[currentIndex].isAttempted = true;
+  const numQuestions = questionList.length;
 
-    let isAttempted = true;
-    if (selectedOption === null) {
-      isAttempted = false;
+  const reducer = function (state, action) {
+    let currIndex;
+    switch (action.type) {
+      case "setQuestion":
+        currIndex = action.payload;
+        return {
+          ...state,
+          index: currIndex,
+          isAnswered: state.questions.at(currIndex).isAnswered,
+          answer: state.questions.at(currIndex).selectedOption,
+        };
+      case "setAnswer":
+        state.questions.at(state.index).isAnswered = true;
+        state.questions.at(state.index).selectedOption = action.payload;
+        return {
+          ...state,
+          answer: state.questions.at(state.index).selectedOption,
+          isAnswered: true,
+        };
+
+      case "nextQuestion":
+        currIndex = state.index + 1;
+        return {
+          ...state,
+          index: currIndex,
+          isAnswered: state.questions.at(currIndex).isAnswered,
+          answer: state.questions.at(currIndex).selectedOption,
+        };
+      case "prevQuestion":
+        currIndex = state.index - 1;
+        return {
+          ...state,
+          index: currIndex,
+          isAnswered: state.questions.at(currIndex).isAnswered,
+          answer: state.questions.at(currIndex).selectedOption,
+        };
+      default:
+        throw new Error("Not a valid action for the reducer");
     }
-    const newAnswer = {
-      questionId: currentQuestion._id,
-      tags: currentQuestion.tags,
-      isCorrect: selectedOption === currentQuestion.answer,
-      isAttempted,
-    };
-
-    const alreadyAnswered = answers.find(
-      (ans) => ans._id === currentQuestion._id
-    );
-
-    if (alreadyAnswered) {
-      setAnswers([
-        ...answers.filter((ans) => ans._id !== alreadyAnswered._id),
-        newAnswer,
-      ]);
-    } else {
-      setAnswers([...answers, newAnswer]);
-    }
   };
 
-  const nextQuestion = () => {
-    if (currentIndex === questionList.length) return;
-    //no options are selected so we dont need to save the current question.
-    saveQuestion();
-    handleQuestionChange(currentIndex + 1);
-  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Now, you can use the retrieved parameters in your component as needed
-  // For example, you can display them in your component's JSX
   return (
     <>
       <div className="page-layout">
         <div className="navbar">
-          <TestNav
-            questions={questionList}
-            setQuestion={handleQuestionChange}
-          />
+          <TestNav questions={state.questions} dispatch={dispatch} />
         </div>
 
         <div className="content">
           <div className="appbar">
-            <Appbar />
+            <AppbarTest />
           </div>
-
           <div className="main">
-            <div>
-              <h2>Test Details</h2>
-              <p>Test Type: {testType}</p>
-              <p>Selected Option: {topic}</p>
-              <p>Test Duration: {testDuration}</p>
-              <p>current question : {currentQuestion}</p>
-              <QuestionCard question={currentQuestion} />
-            </div>
+            {state.status === "active" && (
+              <QuestionCard
+                index={state.index}
+                question={state.questions.at(state.index)}
+                answer={state.answer}
+                dispatch={dispatch}
+                numQuestions={numQuestions}
+              />
+            )}
+
+            {state.status === "finished" && (
+              <TestReport questions={state.questions} />
+            )}
           </div>
         </div>
       </div>
     </>
   );
 }
-
 export default Test;

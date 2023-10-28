@@ -105,6 +105,11 @@ h1 {
   color: var(--color-primary);
   background-color: white;
 }
+.attempted{
+  background-color: var(--color-success);
+  color: var(--text-light-primary);
+
+}
 
 /* ======styles for the page layout============== */
 
