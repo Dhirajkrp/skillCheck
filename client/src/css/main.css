@@ -91,9 +91,12 @@ h1 {
     cursor: pointer;
     background-color: var(--btn-bg-color);
     color : var(--text-light-primary);
-    transition: all 250ms ease-in-out;
+    transition: opacity 150ms ease-in-out;
 }
 
+.btn:hover{
+  opacity: .9;
+}
 
 .question-index-btn{
   all:unset;

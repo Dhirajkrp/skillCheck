@@ -1,5 +1,5 @@
 // defining a constant for the timer
-const SECONDS_PER_QUESTION = 60;
+const SECONDS_PER_QUESTION = 3;
 
 const initialState = {
   questions: [],
@@ -71,7 +71,9 @@ const reducer = function (state, action) {
       return {
         ...state,
         secondsRemaining: state.secondsRemaining - 1,
+        status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
+
     case "submitTest":
       return {
         ...state,

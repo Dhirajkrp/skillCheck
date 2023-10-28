@@ -37,36 +37,38 @@ function Login() {
   return (
     <div className="Login">
       <div className="login-form">
-        <div className="title">LOGIN</div>
-        <div className="form">
-          <form action="/test" method="post">
-            <div className="input-container">
-              <label id="uname">Username</label>
-              <input
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                className="input"
-                placeholder="name"
-                type="text"
-              />
-            </div>
-            <div className="input-container">
-              <label id="uname">Password</label>
-              <input
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                className="input"
-                placeholder="password"
-                type="password"
-              />
-            </div>
-            <div className="button-container">
-              <input type="submit" onClick={submit} />
-            </div>
-          </form>
-        </div>
+        <h3 className="title">Login</h3>
+        <form action="/test" method="post">
+          <div className="input-container">
+            <label id="uname">Username</label>
+            <input
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="input"
+              placeholder="name"
+              type="text"
+            />
+          </div>
+          <div className="input-container">
+            <label id="uname">Password</label>
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              className="input"
+              placeholder="password"
+              type="password"
+            />
+          </div>
+          <div className="button-container">
+            <input
+              type="submit"
+              onClick={submit}
+              className=" btn btn-secondary"
+            />
+          </div>
+        </form>
       </div>
     </div>
   );
