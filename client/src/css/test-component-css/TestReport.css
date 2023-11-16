@@ -1,0 +1,63 @@
+/* TestReport.css */
+
+/* Navbar styles */
+.report{
+    margin-left: 11%;
+    margin-right: -5%;
+}
+nav {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  /* Container styles */
+  section {
+    margin: 20px;
+  }
+  
+  /* Your score section styles */
+  section div {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+  
+  /* Table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Colors for Yes and No */
+  td.yes {
+    color: #28a745;
+  }
+  
+  td.no {
+    color: #dc3545;
+  }
+  

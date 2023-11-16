@@ -1,0 +1,19 @@
+/* Timer.css */
+
+.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add this if you want to center the text in the button */
+  .timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

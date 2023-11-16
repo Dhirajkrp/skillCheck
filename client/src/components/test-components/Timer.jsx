@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "../../css/test-component-css/Timer.css";
 
 function Timer({ dispatch, secondsRemaining }) {
   const mins = Math.floor(secondsRemaining / 60);

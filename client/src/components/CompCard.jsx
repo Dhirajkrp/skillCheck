@@ -12,7 +12,7 @@ export function CompCard({ name, img, desc, profile, websiteLink }) {
         </p>
         <p>
           <b>Hiring Profiles:</b> <br />
-          {profile}
+          {`${profile.map(e=>e)}`}
         </p>
       </div>
       <div className="card-buttons">

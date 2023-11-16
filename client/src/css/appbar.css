@@ -19,10 +19,15 @@
   border-radius: 50%;
   background-color: var(--color-primary);
 }
-
 button {
   all: unset;
   padding: 0.6em 1.75em;
   color: white;
-  background-color: var(--color-secondary);
+  background-color: var(--color-success);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049; /* Darken the color slightly on hover */
 }

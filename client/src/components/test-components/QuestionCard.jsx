@@ -1,6 +1,7 @@
 import React from "react";
 import NextButton from "./NextButton";
 import PrevButton from "./PrevButton";
+import "../../css/test-component-css/QuestionCard.css"
 
 function QuestionCard({ index, question, dispatch, numQuestions }) {
   return (

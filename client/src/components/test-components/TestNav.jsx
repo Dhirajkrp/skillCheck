@@ -4,7 +4,13 @@ function TestNav({ questions, dispatch }) {
   return (
     <>
       <div className="sidebar-header">
-        <span className="sidebar-logo">Logo</span>
+        <span className="sidebar-logo">
+        <img
+            src="https://i.ibb.co/vvdtL70/logo-horizontal.png"
+            alt="logo-horizontal"
+            border="0"
+          />
+        </span>
       </div>
       <ul className="questions-icon-container">
         {questions.map((question, index) => {

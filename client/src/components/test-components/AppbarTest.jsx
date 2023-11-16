@@ -10,7 +10,7 @@ function AppbarTest({ dispatch, secondsRemaining }) {
       </span>
       <div className="user-card">
         <button
-          className="btn-primary"
+          className="btn-success"
           onClick={() => dispatch({ type: "submitTest" })}
         >
           Submit

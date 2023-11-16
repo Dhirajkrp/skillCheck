@@ -7,7 +7,7 @@ function PrevButton({ index, dispatch }) {
       className="btn btn-primary"
       onClick={() => dispatch({ type: "prevQuestion" })}
     >
-      Prev
+      Previous
     </button>
   );
 }

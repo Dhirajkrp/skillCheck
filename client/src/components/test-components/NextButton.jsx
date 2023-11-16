@@ -1,10 +1,9 @@
 import React from "react";
-
+import "../../css/test-component-css/NextButton.css"
 function NextButton({ index, numQuestions, dispatch }) {
   if (index >= numQuestions - 1) return;
   return (
     <button
-      className="btn btn-primary"
       onClick={() => dispatch({ type: "nextQuestion" })}
     >
       Next
