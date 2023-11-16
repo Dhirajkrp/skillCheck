@@ -8,9 +8,10 @@
 }
 
 .sidebar-header {
+  margin-top: 10%;
   width: 100%;
   padding-block: 0.5em;
-  border-bottom: 1px solid #fefefe70;
+  /* border-bottom: 1px solid #fefefe70; */
 }
 .sidebar-logo {
   font-size: 2em;

@@ -26,6 +26,7 @@ export default function Languages() {
           key={e._id}
           name={e.name}
           img={e.langImg}
+          topics={e.topics}
           // test={e.totalTest}
           // questions={e.totalQuestions}
         />
