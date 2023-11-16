@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3500;
 const questionRoutes = require("./routes/questionRoutes");
 const languageRoutes = require("./routes/languageRoutes");
 const companyRoutes = require("./routes/companyRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const path = require("path");
 
@@ -31,6 +32,8 @@ app.use("/api/questions", questionRoutes);
 app.use("/api/languages", languageRoutes);
 
 app.use("/api/companies", companyRoutes);
+
+app.use("/api/users", userRoutes);
 
 const start = async () => {
   try {

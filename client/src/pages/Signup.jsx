@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-// import "../css/SignUp.css";
+import "../css/Login.css";
+import { Link } from "react-router-dom";
 // import {useNavigate} from "react-router";
 // import { createUser } from "../../../server/controllers/userController";
 
@@ -35,52 +36,66 @@ function Signup() {
   };
 
   return (
-    <div className="signup">
-      <div className="signup-container">
-        <div>
-          <h1 id="register">SIGN UP</h1>
-        </div>
-
+    <div className="Signup">
+      <div className="signup-form">
+        <h3 className="title">
+          <span className="back-btn">
+            <Link to="/">back</Link>
+          </span>
+          Signup
+        </h3>
         <form method="post">
-          <label className="label">Username</label>
-          <input
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            className="input"
-            placeholder="name"
-            type="text"
-          />
-          <label className="label">Email</label>
-          <input
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            className="input"
-            placeholder="email"
-            type="email"
-          />
+          <div className="input-container">
+            <label className="label">Username</label>
+            <input
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="input"
+              placeholder="name"
+              type="text"
+            />
+          </div>
+          <div className="input-container">
+            <label className="label">Email</label>
+            <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              className="input"
+              placeholder="email"
+              type="email"
+            />
+          </div>
+          <div className="input-container">
+            <label className="label">Password</label>
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              className="input"
+              placeholder="password"
+              type="password"
+            />
+          </div>
+          <div className="input-container">
+            <label className="label">Roll No</label>
+            <input
+              onChange={(e) => {
+                setRollNo(e.target.value);
+              }}
+              className="input"
+              placeholder="rollNo"
+              type="number"
+            />
+          </div>
 
-          <label className="label">Password</label>
-          <input
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            className="input"
-            placeholder="password"
-            type="password"
-          />
-          <label className="label">Roll No</label>
-          <input
-            onChange={(e) => {
-              setRollNo(e.target.value);
-            }}
-            className="input"
-            placeholder="rollNo"
-            type="number"
-          />
-          <div>
-            <input type="submit" onClick={submit} className="btn" />
+          <div className="button-container">
+            <input
+              type="submit"
+              onClick={submit}
+              className="btn btn-secondary"
+            />
           </div>
         </form>
       </div>

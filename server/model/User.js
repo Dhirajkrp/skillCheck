@@ -4,19 +4,17 @@ const Schema = mongoose.Schema;
 
 let userinfo = new Schema({
   name: {
-    type: String
+    type: String,
   },
   emailID: {
-    type: String
+    type: String,
   },
-  password:{
-    type: Number
+  password: {
+    type: String,
   },
-  rollNo:{
-    type:Number
-  }
+  rollNo: {
+    type: String,
+  },
 });
-
-
 
 module.exports = mongoose.model("User", userinfo);

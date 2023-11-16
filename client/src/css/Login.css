@@ -1,4 +1,5 @@
-.Login {
+.Login,
+.Signup {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -12,7 +13,8 @@
   background-size: cover;
   object-fit: contain;
 }
-.login-form {
+.login-form,
+.signup-form {
   padding: 2rem;
   background-color: #202133;
   /* border: 2px solid #202133; */
@@ -35,8 +37,10 @@
 }
 
 input[type="text"],
+input[type="email"],
+input[type="number"],
 input[type="password"] {
-  padding-block: 1em;
+  padding-block: 0.5em;
   padding-inline-start: 0.5em;
   font-size: 1em;
 }
@@ -50,6 +54,15 @@ input[type="password"] {
   font-size: 35px;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: 500;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  font-size: 0.5em;
 }
 label {
   font-weight: 600;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "../css/Login.css";
+import { Link } from "react-router-dom";
 // import {useNavigate} from "react-router";
 //import "./backend/index";
 // import { useHistory } from "react-router";
@@ -37,7 +38,12 @@ function Login() {
   return (
     <div className="Login">
       <div className="login-form">
-        <h3 className="title">Login</h3>
+        <h3 className="title">
+          <span className="back-btn">
+            <Link to="/">back</Link>
+          </span>
+          Login
+        </h3>
         <form action="/test" method="post">
           <div className="input-container">
             <label id="uname">Username</label>
