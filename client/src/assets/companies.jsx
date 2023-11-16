@@ -2,7 +2,11 @@ const companies = [
   {
     _id: "101",
     name: "GrapeCity",
-    image: "https://www.mgmnoida.org/img/grapecity.jpg",
+    compImage: "https://www.mgmnoida.org/img/grapecity.jpg",
+    description:
+      "GrapeCity is an award-winning Microsoft Gold Certified Partner and one of the world's largest providers of .NET and JavaScript developer components",
+    profile: ["Quality Tester", "Software Developer"],
+    websiteLink: "https://www.grapecity.in/",
     topics: [
       {
         name: "OOPS",

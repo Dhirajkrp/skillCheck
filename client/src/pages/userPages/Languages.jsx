@@ -1,24 +1,35 @@
-import React from "react";
-import LanguageCard from "../../components/LanguageCard";
-import "../../css/LanguageCard.css";
+import "../../css/company.css";
+import { useEffect, useState } from "react";
+import { LangCard } from "../../components/LangCard";
 
-//database fetch using axios
-import { langs } from "../../assets/languages";
+export default function Languages() {
+  const [data, setData] = useState([]);
 
-function Languages() {
+  useEffect(() => {
+    async function getCompanies() {
+      try {
+        const res = await fetch(`http://localhost:3500/api/languages`);
+        const data = await res.json();
+        console.log(data);
+        setData(data); // Set the data in the state
+      } catch (error) {
+        console.log("Error");
+      }
+    }
+    getCompanies();
+  }, []);
+
   return (
-    <div className="language-container">
-      {langs.map((lang) => (
-        <LanguageCard
-          _id={lang._id}
-          name={lang.name}
-          topics={lang.topics}
-          image={lang.image}
-          key={lang._id}
+    <div className="lang-cards">
+      {data.map((e) => (
+        <LangCard
+          key={e._id}
+          name={e.name}
+          img={e.langImg}
+          // test={e.totalTest}
+          // questions={e.totalQuestions}
         />
       ))}
     </div>
   );
 }
-
-export default Languages;

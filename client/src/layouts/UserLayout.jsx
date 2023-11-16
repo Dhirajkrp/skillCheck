@@ -42,7 +42,7 @@ function UserRoutes() {
 
         <div className="content">
           <div className="appbar">
-            <Appbar userName={user.name || "User"} />
+            <Appbar userName={"User"} />
           </div>
 
           <div className="main">

@@ -7,7 +7,7 @@ function Appbar({ userName }) {
       <span>page name</span>
       <div className="user-card">
         <span className="user-icon"></span>
-        <span className="user-name">{userName}</span>
+        <span className="user-name">User</span>
       </div>
     </>
   );

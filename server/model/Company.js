@@ -21,6 +21,12 @@ let compinfo = new Schema({
   websiteLink: {
     type: String,
   },
+  topics: {
+    type: [String],
+  },
+  faq: {
+    type: [String],
+  },
 });
 
 module.exports = mongoose.model("Company", compinfo);

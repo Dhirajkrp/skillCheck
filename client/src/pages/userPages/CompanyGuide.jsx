@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "../../css/StudyGuide.css";
 
 import { companies } from "../../assets/companies";
+import axios from "axios";
+
 function CompanyGuide() {
   let { companyID } = useParams();
-  const company = companies.filter((comp) => comp._id === companyID)[0];
+
+  // // const [company, setCompany] = useState({});
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:3500/api/companies/${companyID}`)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       // setCompany(res.data[0]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   return (
     <>
       <div className="language-intro">
         <div className="language-image">
-          <img src={company.image} alt="language image" />
+          <img src={company.compImage} alt="language image" />
         </div>
         <div className="info">
           <h3 className="language-name">{company.name}</h3>
-          <p>Total Topics: {company.topics.length}</p>
+          <p>Total Topics: {company.topics}</p>
         </div>
       </div>
       <h3>Topics To cover</h3>
