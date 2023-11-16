@@ -1,0 +1,36 @@
+/* OurTeam.css */
+
+.our-team-container {
+    /* max-width: 800px; */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .about-us {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .team-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .team-member-card {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .team-member-image {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .team-member-name {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

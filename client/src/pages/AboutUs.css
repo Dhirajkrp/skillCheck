@@ -1,0 +1,40 @@
+/* AboutUs.css */
+
+.about-us-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.about-us-content {
+  text-align: justify;
+}
+
+.mission-statement {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.unique-features {
+  margin-top: 20px;
+}
+
+.unique-features h2 {
+  font-size: 24px;
+}
+
+.unique-features ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.unique-features li {
+  margin-bottom: 10px;
+}
+
+.our-commitment {
+  font-size: 18px;
+  margin-top: 20px;
+}

@@ -17,7 +17,7 @@ status:
 
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
 
     //validating if the email and the password exist.
     if (!email) {

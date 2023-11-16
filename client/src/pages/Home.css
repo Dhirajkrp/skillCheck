@@ -1,0 +1,177 @@
+*{
+    margin-left:0px;
+    margin-right:0px;
+    padding:0px;
+}
+
+.CompImage{
+    height:200px;
+    width:200px;
+    margin-right:32px;
+   border-radius:30px;
+}
+
+#recruiters{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.recruitHead{
+    font-size:35px;
+    color:white;
+    background-color:#442768;
+    font-family: "Inria Sans" ,"Sans-serif";
+    margin-top:70px;
+    margin-bottom:50px;
+    font-weight:bolder;
+    border:2px solid black;
+}
+
+#Latest{
+display: flex;
+flex-direction: row;
+}
+
+#im1
+{
+width: 250px;
+height: 200px;
+border-radius: 20px;
+animation-name: my-animation;
+animation-duration: 2s;
+animation-direction: alternate;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+}
+
+#FirstIm{
+    padding-left:200px;
+    padding-top:60px;
+}
+  
+#SecondIm{
+    padding-left:0px;
+}
+  
+#ThirdIm{
+    padding-left:250px;
+    padding-bottom:90px; 
+}
+  
+  #FirstIm:hover img
+  {
+      transform: scale(1.5);
+      border-radius: 20px;
+  }
+  
+  #SecondIm:hover img
+  {
+      transform: scale(1.5);
+      border-radius: 20px;
+  }
+  
+  #ThirdIm:hover img
+  {
+      transform: scale(1.5);
+      border-radius: 20px;
+  }
+
+@keyframes my-animation {
+    from {
+      width: 300px;
+      top: 10px;
+    }
+    to {
+     
+      width:230px;
+      top: 100px;
+    }
+}
+
+#AlText{
+    float:right;
+    padding-top:230px;
+    padding-left:100px;
+    text-decoration: dashed;
+    color:black;
+    text-align: center;
+    font-size:30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  
+  }
+  
+#Al1{
+    font-weight: bolder;
+    font-size:25px;
+    padding-top:30px;
+    color: #442768;
+}
+  
+#Onebtn{
+    width: 40%;
+    padding:10px;
+    margin-top:20px;
+    background-color:black;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    font-size: 23px;
+    justify-items: center;
+    transition: 0.5s;
+    border-radius: 0.25em;
+    cursor: pointer;
+    margin-left:0px;
+    border:0px;
+    color: white;
+  }
+
+  .container{
+    display: flex;
+    /* margin-bottom:60px; */
+}
+
+#head{
+    margin-right:120px;
+    font-size: 54px;
+    font-family: "Inria Sans" ,"Sans-serif";
+}
+
+#imageC{
+    margin-right:30px;
+}
+#image1{
+    /* margin-top:150px; */
+    padding: 10px;
+    margin-right:180px;
+    /* background-color:#442768; */
+}
+
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .box {
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+    
+  }
+
+  /* &:hover {
+    transform: scale(1.1);
+  } */
+
+  .head{
+    margin-left:50px;
+    font-size: 30px;
+    padding-top: 50px;
+  }

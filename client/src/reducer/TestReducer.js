@@ -1,5 +1,5 @@
 // defining a constant for the timer
-const SECONDS_PER_QUESTION = 3;
+const SECONDS_PER_QUESTION = 30;
 
 const initialState = {
   questions: [],

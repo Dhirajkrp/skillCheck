@@ -1,0 +1,27 @@
+/* ContactUs.css */
+
+.contact-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .heading {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .contact-details {
+    margin-top: 20px;
+  }
+  
+  .contact-details p {
+    margin-bottom: 10px;
+  }
+  

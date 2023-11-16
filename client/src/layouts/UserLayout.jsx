@@ -1,9 +1,11 @@
-import React from "react";
+import React, { createContext } from "react";
 import { Outlet } from "react-router-dom";
 import Appbar from "../components/Appbar";
 import Sidebar from "../components/Sidebar";
+import { useUser } from "../context/userContext";
 
 function UserRoutes() {
+  const { user } = useUser();
   const routes = [
     {
       name: "Dashboard",
@@ -40,7 +42,7 @@ function UserRoutes() {
 
         <div className="content">
           <div className="appbar">
-            <Appbar />
+            <Appbar userName={user.name || "User"} />
           </div>
 
           <div className="main">

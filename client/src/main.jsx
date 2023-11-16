@@ -15,6 +15,9 @@ import {
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+import OurTeam from "./pages/OurTeam";
 
 //user route import
 
@@ -36,16 +39,20 @@ import UserRoutes from "./layouts/UserLayout.jsx";
 import EditorLayout from "./layouts/EditorLayout.jsx";
 import TakeTest from "./pages/userPages/TakeTest.jsx";
 import Test from "./pages/userPages/Tests.jsx";
+import { UserProvider } from "./context/userContext.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       {/* top level routes */}
+
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/our-team" element={<OurTeam />} />
       <Route path="/test" element={<Test />} />
-
       <Route path="/user" element={<UserRoutes />}>
         <Route path="" element={<Dashboard />} />
         <Route path="languages" element={<Languages />} />
@@ -69,6 +76,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <UserProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </UserProvider>
   </React.StrictMode>
 );

@@ -1,14 +1,22 @@
 import MovingSlider from "../components/OwlCarousel";
-import "../css/Home.css";
+import "./Home.css";
 import Footer from "./Footer";
 
+import "../css/main.css";
+
+import { Link } from "react-router-dom";
+import TopBar from "../components/TopBar";
 function MainPage() {
   return (
     <div>
+      <TopBar />
       <div className="container">
         <div className="box1">
           <img src="logo_horizontal.png" id="image1" /> <br />
           <h1 id="head">Get Placement Ready!!!</h1>
+          <button className="btn btn-primary">
+            <Link to="/login">Login</Link>
+          </button>
         </div>
 
         <img
