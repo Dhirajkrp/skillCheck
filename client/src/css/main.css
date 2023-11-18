@@ -2,7 +2,7 @@
 :root {
   --color-primary: #211536;
   --color-secondary: #ff9211;
-  --color-muted : #333333;
+  --color-muted: #333333;
   --text-dark-primary: #1c1c1c;
   --text-dark-secondary: #555;
   --text-light-primary: #fefefe;
@@ -19,14 +19,16 @@
   padding: 0;
 }
 
-
 /* ========================================================================== */
 
 /* setting up the font family and sizes */
 
 body {
   font-size: 16px;
-  font-family: "Inria Sans" ,'Sans-serif";
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--color-muted);
 }
 
 h6,
@@ -57,49 +59,41 @@ h1 {
 
 /* Styles for buttons */
 
-
-
-
-.btn-success{
-    --btn-bg-color:var(--color-success);
+.btn-success {
+  --btn-bg-color: var(--color-success);
 }
 
-.btn-danger{
-
-    --btn-bg-color:var(--color-danger);
-
+.btn-danger {
+  --btn-bg-color: var(--color-danger);
 }
 
-.btn-secondary{
-    --btn-bg-color:var(--color-secondary);
-    
+.btn-secondary {
+  --btn-bg-color: var(--color-secondary);
 }
 
-.btn-primary{
-    --btn-bg-color:var(--color-primary);
-
+.btn-primary {
+  --btn-bg-color: var(--color-primary);
 }
 
-.btn-muted{
-    --btn-bg-color:var(--color-muted);
-
+.btn-muted {
+  --btn-bg-color: var(--color-muted);
 }
 
 .btn {
-    all: unset;
-    padding: 0.5em 1.75em;
-    cursor: pointer;
-    background-color: var(--btn-bg-color);
-    color : var(--text-light-primary);
-    transition: opacity 150ms ease-in-out;
+  all: unset;
+  padding: 0.5em 1.75em;
+  cursor: pointer;
+  background-color: var(--btn-bg-color);
+  color: var(--text-light-primary);
+  transition: opacity 150ms ease-in-out;
 }
 
-.btn:hover{
-  opacity: .9;
+.btn:hover {
+  opacity: 0.9;
 }
 
-.question-index-btn{
-  all:unset;
+.question-index-btn {
+  all: unset;
   height: 2.5em;
   aspect-ratio: 1;
   display: inline-grid;
@@ -108,34 +102,30 @@ h1 {
   color: var(--color-primary);
   background-color: white;
 }
-.attempted{
+.attempted {
   background-color: var(--color-success);
   color: var(--text-light-primary);
-
 }
 
 /* ======styles for the page layout============== */
 
-.page-layout{
-
+.page-layout {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  display: flex;  
+  display: flex;
 }
 
-.navbar{
-  flex:1;
+.navbar {
+  flex: 1;
   background-color: var(--color-primary);
 }
 
-
-.content{
-  flex:5;
-
+.content {
+  flex: 5;
 }
 
-.main{
+.main {
   height: 90vh;
   width: 100%;
   overflow-y: auto;
@@ -143,6 +133,6 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 2em;
-  padding-inline:2em;
+  padding-inline: 2em;
   padding-block-end: 2em;
 }

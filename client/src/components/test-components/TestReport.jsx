@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useUser } from "../../context/userContext";
 import axios from "axios";
+
+import "../../css/test-component-css/TestReport.css";
 function TestReport({ questions, testName }) {
   const topics = [];
   // Create a map to group questions by tags
@@ -33,6 +35,7 @@ function TestReport({ questions, testName }) {
     (ques) => ques.answer === ques.selectedOption
   ).length;
 
+  const percentage = Math.floor((score / questions.length) * 100);
   // saving the report in the database.
   const { user } = useUser();
 
@@ -43,17 +46,28 @@ function TestReport({ questions, testName }) {
     name: testName,
   };
 
-async function addReport() {
-      axios
-        .post("http://localhost:3500/api/report", newReport)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }
-addReport();
+  async function addReport() {
+    axios
+      .post("http://localhost:3500/api/report", newReport)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+  // addReport();
 
   return (
     <section>
-      <div>Your score is : {score} </div>;<h3>Questions</h3>
+      <div className="test-card">
+        <span>
+          Total Questions: <strong> {questions.length}</strong>
+        </span>
+        <span>
+          Score: <strong> {score}</strong>
+        </span>
+        <span>
+          Percentage: <strong> {percentage} %</strong>
+        </span>
+      </div>
+      <h3 className="table-heading">Questions</h3>
       <table>
         <tr>
           <th>SNO</th>
@@ -66,13 +80,22 @@ addReport();
           return (
             <tr>
               <td>{index + 1}</td>
-              <td>{ques.question}</td> <td>{ques.isAnswered ? "Yes" : "No"}</td>
-              <td>{ques.answer === ques.selectedOption ? "Yes" : "No"}</td>
+              <td>{ques.question}</td>{" "}
+              <td className={ques.isAnswered ? "success" : "fail"}>
+                {ques.isAnswered ? "Yes" : "No"}
+              </td>
+              <td
+                className={
+                  ques.answer === ques.selectedOption ? "success" : "fail"
+                }
+              >
+                {ques.answer === ques.selectedOption ? "Yes" : "No"}
+              </td>
             </tr>
           );
         })}
       </table>
-      <h3>Topics</h3>
+      <h3 className="table-heading">Topics</h3>
       <table>
         <tr>
           <th>SNO</th>

@@ -40,6 +40,7 @@ import EditorLayout from "./layouts/EditorLayout.jsx";
 import TakeTest from "./pages/userPages/TakeTest.jsx";
 import Test from "./pages/userPages/Tests.jsx";
 import { UserProvider } from "./context/userContext.jsx";
+import TestReport from "./components/test-components/TestReport.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -61,6 +62,7 @@ const router = createBrowserRouter(
         <Route path="company/:companyID" element={<CompanyGuide />} />
         <Route path="reports" element={<Report />} />
         <Route path="take-test" element={<TakeTest />} />
+        <Route path="test-report" element={<TestReport />} />
       </Route>
 
       <Route path="/editor" element={<EditorLayout />}>

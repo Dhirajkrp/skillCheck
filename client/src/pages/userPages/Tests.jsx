@@ -8,6 +8,8 @@ import TestNav from "../../components/test-components/TestNav";
 import TestReport from "../../components/test-components/TestReport";
 import StartPage from "../../components/test-components/StartPage";
 import Loader from "../../components/test-components/Loader";
+import Sidebar from "../../components/Sidebar";
+import Appbar from "../../components/Appbar";
 
 function Test() {
   //getting the information about the test
@@ -16,6 +18,29 @@ function Test() {
   const testType = searchParams.get("type");
   const topic = searchParams.get("option");
   const testDuration = searchParams.get("duration");
+
+  const routes = [
+    {
+      name: "Dashboard",
+      path: "/user/",
+    },
+    {
+      name: "Languages",
+      path: "/user/languages",
+    },
+    {
+      name: "Companies",
+      path: "/user/companies",
+    },
+    {
+      name: "Reports",
+      path: "/user/reports",
+    },
+    {
+      name: "Take a Test",
+      path: "/user/take-test",
+    },
+  ];
 
   // defining the api route based on the test information
   let uri;
@@ -74,7 +99,21 @@ function Test() {
       )}
       {/* This section will be displayed when the user clicks on the submit button */}
       {state.status === "finished" && (
-        <TestReport questions={state.questions} testName={topic} />
+        <div className="page-layout">
+          <div className="navbar">
+            <Sidebar routes={routes} />
+          </div>
+
+          <div className="content">
+            <div className="appbar">
+              <Appbar userName={"User"} />
+            </div>
+
+            <div className="main">
+              <TestReport questions={state.questions} testName={topic} />
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

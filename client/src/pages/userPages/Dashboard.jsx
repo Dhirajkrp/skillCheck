@@ -11,9 +11,9 @@ function dashboard() {
         <h2>Student Information:</h2>
         {user ? (
           <div>
-            <h2>Name: {user.name}</h2>
-            <h2>Roll No. : {user.rollNo}</h2>
-            <h2>Email: {user.emailID}</h2>
+            <h5>Name: {user.name}</h5>
+            <h5>Roll No. : {user.rollNo}</h5>
+            <h5>Email: {user.emailID}</h5>
           </div>
         ) : (
           <p>Please log in to see your profile.</p>

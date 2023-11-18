@@ -1,0 +1,31 @@
+.test-card {
+  display: flex;
+  height: 12vh;
+  background-color: var(--color-primary);
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+}
+
+.test-card > span {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.table-heading {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.fail {
+  color: var(--color-danger);
+}
+
+table {
+  color: var(--color-muted);
+}

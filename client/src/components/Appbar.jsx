@@ -1,13 +1,16 @@
 import React from "react";
+import { useUser } from "../context/userContext";
 import "../css/appbar.css";
 
-function Appbar({ userName }) {
+function Appbar() {
+  const { user } = useUser();
+  const name = user.name || "user";
   return (
     <>
-      <span>page name</span>
+      <span>{new Date().toLocaleDateString("en-US")}</span>
       <div className="user-card">
         <span className="user-icon"></span>
-        <span className="user-name">User</span>
+        <span className="user-name">{name}</span>
       </div>
     </>
   );
