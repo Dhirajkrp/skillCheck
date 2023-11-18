@@ -9,18 +9,18 @@ import axios from "axios";
 function CompanyGuide() {
   let { companyID } = useParams();
 
-  // // const [company, setCompany] = useState({});
+  const [company, setCompany] = useState({});
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:3500/api/companies/${companyID}`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       // setCompany(res.data[0]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3500/api/companies/${companyID}`)
+      .then((res) => {
+        setCompany(res.data[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
+  console.log(company);
   return (
     <>
       <div className="language-intro">
@@ -29,9 +29,10 @@ function CompanyGuide() {
         </div>
         <div className="info">
           <h3 className="language-name">{company.name}</h3>
-          <p>Total Topics: {company.topics}</p>
+          <p>Total Topics: {company.topics?.length}</p>
         </div>
       </div>
+
       <h3>Topics To cover</h3>
       <table>
         <tr>
@@ -40,7 +41,7 @@ function CompanyGuide() {
           <th>Resource</th>
         </tr>
 
-        {company.topics.map((topic, index) => {
+        {company.topics?.map((topic, index) => {
           return (
             <tr>
               <td>{index + 1}</td> <td>{topic.name}</td>{" "}
@@ -51,9 +52,10 @@ function CompanyGuide() {
           );
         })}
       </table>
+
       <div className="faq">
         <h3>Frequently Asked Questions:</h3>
-        {company.faq.map((ques, index) => {
+        {company.faq?.map((ques, index) => {
           return (
             <>
               <h5>

@@ -30,6 +30,7 @@ function Companies() {
             desc={e.description}
             profile={e.profile}
             websiteLink={e.websiteLink}
+            compId={e._id}
           />
         ))}
       </div>

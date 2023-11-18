@@ -4,7 +4,8 @@ const {
   getReportsById,
   createReports,
   deleteReports,
-  updateReports
+  updateReports,
+  getReportsOfUser,
 } = require("../controllers/reportController");
 const router = express.Router();
 
@@ -15,6 +16,8 @@ router
   .get(getReportsById)
   .patch(updateReports)
   .delete(deleteReports);
+
+router.route("/all/:userId").get(getReportsOfUser);
 
 // router.route("/profiles/:id").get(getProfiles);
 

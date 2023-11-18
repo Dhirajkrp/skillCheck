@@ -38,3 +38,12 @@
 .nav-links > li:hover {
   background-color: rgba(var(--color-primary), 0.07);
 }
+
+a.active {
+  color: orange;
+}
+
+.nav-links > li > a.active {
+  color: orange;
+  background-color: red;
+}

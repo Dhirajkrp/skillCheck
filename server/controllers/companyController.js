@@ -81,7 +81,8 @@ status:
     400 , bad request , if some values are missing.
 */
 const createCompany = async (req, res) => {
-  let { name, description, profile, compImage, websiteLink } = req.body;
+  let { name, description, profile, compImage, websiteLink, topics, faq } =
+    req.body;
 
   // validating all the input values before adding to the database.
   if (!name) {
@@ -122,6 +123,8 @@ const createCompany = async (req, res) => {
     profile,
     compImage,
     websiteLink,
+    topics,
+    faq,
   };
 
   const newCompany = new Company(data);

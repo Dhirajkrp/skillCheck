@@ -1,5 +1,5 @@
-// eslint-disable-next-line react/prop-types
-export function CompCard({ name, img, desc, profile, websiteLink }) {
+import { Link } from "react-router-dom";
+export function CompCard({ name, img, desc, profile, websiteLink, compId }) {
   return (
     <div className="card">
       <div className="card-header">
@@ -17,9 +17,13 @@ export function CompCard({ name, img, desc, profile, websiteLink }) {
       </div>
       <div className="card-buttons">
         <button className="start-quiz">
-          <a href={`${websiteLink}`} target="_black" className="more-btn">View More</a>
+          <a href={`${websiteLink}`} target="_black" className="more-btn">
+            View More
+          </a>
         </button>
-        <button className="study-material">Study Material</button>
+        <button className="study-material">
+          <Link to={`/user/company/${compId}`}>Study Material</Link>
+        </button>
       </div>
     </div>
   );

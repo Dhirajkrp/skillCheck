@@ -98,6 +98,18 @@ const createReports = async (req, res) => {
   return res.status(201).json(newReports);
 };
 
+// function to get the reports of a user
+const getReportsOfUser = async (req, res) => {
+  const { userId } = req.params;
+
+  const reports = await Report.find({ userId });
+
+  if (!reports.length) {
+    return res.status(404).json(reports);
+  }
+  return res.status(200).json(reports);
+};
+
 /*
 function to delete a Reports :
 parameters :
@@ -189,4 +201,5 @@ module.exports = {
   createReports,
   deleteReports,
   updateReports,
+  getReportsOfUser,
 };

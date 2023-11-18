@@ -22,10 +22,20 @@ let compinfo = new Schema({
     type: String,
   },
   topics: {
-    type: [String],
+    type: [
+      {
+        name: String,
+        link: String,
+      },
+    ],
   },
   faq: {
-    type: [String],
+    type: [
+      {
+        question: String,
+        answer: String,
+      },
+    ],
   },
 });
 

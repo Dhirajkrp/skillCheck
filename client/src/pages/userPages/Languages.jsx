@@ -10,7 +10,7 @@ export default function Languages() {
       try {
         const res = await fetch(`http://localhost:3500/api/languages`);
         const data = await res.json();
-        setData(data); // Set the data in the state
+        setData(data);
       } catch (error) {
         console.log(error);
       }
@@ -21,14 +21,7 @@ export default function Languages() {
   return (
     <div className="lang-cards">
       {data.map((e) => (
-        <LangCard
-          key={e._id}
-          name={e.name}
-          img={e.image}
-          langId={e._id}
-          // test={e.totalTest}
-          // questions={e.totalQuestions}
-        />
+        <LangCard key={e._id} name={e.name} img={e.image} langId={e._id} />
       ))}
     </div>
   );
