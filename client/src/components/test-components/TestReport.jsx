@@ -1,4 +1,5 @@
 import React from "react";
+import AppbarTest from "./AppbarTest";
 
 function TestReport({ questions }) {
   const topics = [];
@@ -33,8 +34,11 @@ function TestReport({ questions }) {
   const score = questions.filter(
     (ques) => ques.answer === ques.selectedOption
   ).length;
+
+  // const [score1, setScore] = useState(0);
   return (
-    <section>
+    <section >
+      <AppbarTest score = {score}/>
       <div>Your score is : {score} </div>;<h3>Questions</h3>
       <table>
         <tr>
