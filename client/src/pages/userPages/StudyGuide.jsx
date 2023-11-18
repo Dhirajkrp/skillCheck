@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import axios from "axios";
 import "../../css/StudyGuide.css";
 
-import { langs } from "../../assets/languages";
 function StudyGuide() {
   let { langID } = useParams();
-  const language = langs.filter((lang) => lang._id === langID)[0];
+
+  const [language, setLanguage] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3500/api/languages/${langID}`)
+      .then((res) => {
+        setLanguage(res.data[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
+      {/* <h1>language</h1> */}
       <div className="language-intro">
         <div className="language-image">
           <img src={language.image} alt="language image" />
         </div>
         <div className="info">
           <h3 className="language-name">{language.name}</h3>
-          <p>Total Topics: {language.topics}</p>
+          <p>Total Topics: {language.topics?.length}</p>
         </div>
       </div>
       <h3>Topics To cover</h3>
@@ -26,7 +38,7 @@ function StudyGuide() {
           <th>Resource</th>
         </tr>
 
-        {language.resources.map((res, index) => {
+        {language.resources?.map((res, index) => {
           return (
             <tr>
               <td>{index + 1}</td> <td>{res.name}</td>{" "}
@@ -37,9 +49,10 @@ function StudyGuide() {
           );
         })}
       </table>
+
       <div className="faq">
         <h3>Frequently Asked Questions:</h3>
-        {language.faq.map((ques, index) => {
+        {language.faq?.map((ques, index) => {
           return (
             <>
               <h5>

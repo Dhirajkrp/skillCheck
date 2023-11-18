@@ -35,7 +35,7 @@ const getLanguageById = async (req, res) => {
     const language = await Language.find({ _id: languageID });
     return res.status(200).json(language);
   } catch (err) {
-    return res.status(500).json({ message: "Cannot resole the Language ID" });
+    return res.status(500).json({ message: "Cannot resovle the Language ID" });
   }
 };
 
@@ -73,7 +73,7 @@ status:
     401 , bad request , if some values are missing.
 */
 const createLanguage = async (req, res) => {
-  let { name, topics } = req.body;
+  let { name, topics, image, resources, faq } = req.body;
 
   // validating all the input values before adding to the database.
   if (!name) {
@@ -100,6 +100,9 @@ const createLanguage = async (req, res) => {
   const data = {
     name,
     topics,
+    image,
+    resources,
+    faq,
   };
 
   const newLanguage = new Language(data);

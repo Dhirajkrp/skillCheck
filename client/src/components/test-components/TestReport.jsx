@@ -1,7 +1,7 @@
-import React from "react";
-import AppbarTest from "./AppbarTest";
-
-function TestReport({ questions }) {
+import React, { useEffect } from "react";
+import { useUser } from "../../context/userContext";
+import axios from "axios";
+function TestReport({ questions, testName }) {
   const topics = [];
   // Create a map to group questions by tags
   const tagGroups = {};
@@ -29,16 +29,30 @@ function TestReport({ questions }) {
     topics.push(tagGroups[tag]);
   }
 
-  console.log(topics);
-
   const score = questions.filter(
     (ques) => ques.answer === ques.selectedOption
   ).length;
 
-  // const [score1, setScore] = useState(0);
+  // saving the report in the database.
+  const { user } = useUser();
+
+  const newReport = {
+    userId: user._id,
+    score: score,
+    date: Date.now(),
+    name: testName,
+  };
+
+async function addReport() {
+      axios
+        .post("http://localhost:3500/api/report", newReport)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+addReport();
+
   return (
-    <section >
-      <AppbarTest score = {score}/>
+    <section>
       <div>Your score is : {score} </div>;<h3>Questions</h3>
       <table>
         <tr>

@@ -17,8 +17,6 @@ let Report = new Schema({
     type: String,
     required: true,
   },
-<<<<<<< HEAD
-=======
 
   // Type: {
   //   type: String,
@@ -26,7 +24,6 @@ let Report = new Schema({
   // category: {
   //   type: String,
   // },
->>>>>>> 375791a123c443f23195d2a51346b9a3d87d917e
 });
 
 module.exports = mongoose.model("Report", Report);

@@ -54,11 +54,9 @@ function Test() {
           <div className="content">
             <div className="appbar">
               <AppbarTest
-                
-                formattedDate = {formattedDate}
+                formattedDate={formattedDate}
                 secondsRemaining={state.secondsRemaining}
                 dispatch={dispatch}
-
               />
               <h3>{formattedDate}</h3>
             </div>
@@ -76,7 +74,7 @@ function Test() {
       )}
       {/* This section will be displayed when the user clicks on the submit button */}
       {state.status === "finished" && (
-        <TestReport questions={state.questions} />
+        <TestReport questions={state.questions} testName={topic} />
       )}
     </>
   );

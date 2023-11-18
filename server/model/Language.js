@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-let language1 = new Schema({
+let language = new Schema({
   name: {
     required: true,
     type: String,
@@ -11,9 +11,21 @@ let language1 = new Schema({
     type: [String],
     required: true,
   },
-  langImg: {
+  image: {
     type: String,
   },
+  resources: [
+    {
+      name: String,
+      link: String,
+    },
+  ],
+  faq: [
+    {
+      question: String,
+      answer: String,
+    },
+  ],
 });
 
-module.exports = mongoose.model("Language", language1);
+module.exports = mongoose.model("Language", language);

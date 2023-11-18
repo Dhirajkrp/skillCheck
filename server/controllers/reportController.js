@@ -4,8 +4,7 @@ const Report = require("../model/Report");
     name: String
     date: date
     score: number
-    Type: String
-    category: String
+    userId : String
 */
 
 /*
@@ -16,7 +15,6 @@ status:
     200, if there are Reports.
     404 , if there are no Reports.
 */
-
 
 const getAllReports = async (req, res) => {
   try {
@@ -70,32 +68,32 @@ status:
     400 , bad request , if some values are missing.
 */
 const createReports = async (req, res) => {
-  let {name,date,score} = req.body;
+  let { name, date, score, userId } = req.body;
   // validating all the input values before adding to the database.
   if (!name) {
     return res.status(400).json({ message: "Name  is required" });
   }
 
   if (!date) {
-    return res
-      .status(400)
-      .json({ message: "date is required" });
+    return res.status(400).json({ message: "date is required" });
   }
 
   if (!score) {
     return res.status(400).json({ message: "score  is required" });
   }
 
- 
-
+  if (!userId) {
+    return res.status(400).json({ message: "userId  is required" });
+  }
 
   const data = {
     name,
     date,
-    score
+    score,
+    userId,
   };
 
-  const newReports = new Reports(data);
+  const newReports = new Report(data);
   await newReports.save();
   return res.status(201).json(newReports);
 };
@@ -137,7 +135,7 @@ status:
 */
 const updateReports = async (req, res) => {
   const { id: ReportsID } = req.params;
-  const { name,date,score} = req.body;
+  const { name, date, score } = req.body;
 
   //validating the Reports id.
   let currentReports = {};
@@ -160,14 +158,12 @@ const updateReports = async (req, res) => {
     return res.status(400).json({ message: "No fileds specified for update" });
   }
 
- 
-
   //creating the updating Reports
   const updatedReports = {
     _id: ReportsID,
     name: name || currentReports.name,
     date: date || currentReports.date,
-    score: score || currentReports.score
+    score: score || currentReports.score,
   };
 
   let newReports = {};
@@ -192,5 +188,5 @@ module.exports = {
   getReportsById,
   createReports,
   deleteReports,
-  updateReports
-}
+  updateReports,
+};

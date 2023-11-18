@@ -14,8 +14,8 @@ function TakeTest() {
 
   return (
     <div className="take-test-container">
-      <AppbarTest testType = {testType}
-      selectedOption = {selectedOption} />
+      {/* <AppbarTest testType = {testType}
+      selectedOption = {selectedOption} /> */}
 
       <h2 className="take-test-heading">Take a New Test</h2>
       <div className="take-test-radio-group">

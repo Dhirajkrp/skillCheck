@@ -10,7 +10,7 @@ const questionRoutes = require("./routes/questionRoutes");
 const languageRoutes = require("./routes/languageRoutes");
 const companyRoutes = require("./routes/companyRoutes");
 const userRoutes = require("./routes/userRoutes");
-const reportRoutes=require("./routes/reportRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 const path = require("path");
 
 // applying middlewares
@@ -27,6 +27,8 @@ app.get("^/$|index(.html)?", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
+//routes for api's
+
 app.use("/api/questions", questionRoutes);
 
 app.use("/api/languages", languageRoutes);
@@ -34,7 +36,10 @@ app.use("/api/languages", languageRoutes);
 app.use("/api/companies", companyRoutes);
 
 app.use("/api/users", userRoutes);
-app.use("/api/report",reportRoutes);
+
+app.use("/api/report", reportRoutes);
+
+// api routes end
 
 const start = async () => {
   try {

@@ -6,17 +6,16 @@ export default function Languages() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function getCompanies() {
+    async function getLanguages() {
       try {
         const res = await fetch(`http://localhost:3500/api/languages`);
         const data = await res.json();
-        console.log(data);
         setData(data); // Set the data in the state
       } catch (error) {
-        console.log("Error");
+        console.log(error);
       }
     }
-    getCompanies();
+    getLanguages();
   }, []);
 
   return (
@@ -25,7 +24,8 @@ export default function Languages() {
         <LangCard
           key={e._id}
           name={e.name}
-          img={e.langImg}
+          img={e.image}
+          langId={e._id}
           // test={e.totalTest}
           // questions={e.totalQuestions}
         />

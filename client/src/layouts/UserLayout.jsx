@@ -24,10 +24,6 @@ function UserRoutes() {
       path: "/user/reports",
     },
     {
-      name: "Tests",
-      path: "/user/tests",
-    },
-    {
       name: "Take a Test",
       path: "/user/take-test",
     },
