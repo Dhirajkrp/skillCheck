@@ -24,21 +24,35 @@ function dashboard() {
     <div>
       <div>
         <h2>Student Information:</h2>
+        {user ? (
+        <div>
+          <h2>Name: {user.name}</h2>
+          <h2>Roll No. : {user.rollNo}</h2>
+          <h2>Email: {user.emailID}</h2>
+
+          {/* Display other user properties as needed */}
+        </div>
+            ) : (
+        <p>Please log in to see your profile.</p>
+      )}
+        {/* <br />
+        {user.map(c => <li key={c}>
+          <h1 className="title1">{c.name}</h1></li>)} */}
+        {/* Name: {user.name}
         <br />
-        Name: {user?.name}
+        Roll Number: {user.rollNo}
         <br />
-        Enrollment Number: {user?.name}
-        <br />
-        Course: {user?.name}
-        <br />
-        Batch: {user?.name}
-        <br />
+        Email-ID: {user.emailID}
+        <br /> */}
+  
+        
       </div>
       <div>
        {dash.map((e)=>{
          <DashCard/>
        })}
       </div>
+      
     </div>
   );
 }

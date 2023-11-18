@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../css/takeTest.css";
+import AppbarTest from "../../components/test-components/AppbarTest";
 
 function TakeTest() {
   const [testType, setTestType] = useState("");
@@ -13,6 +14,9 @@ function TakeTest() {
 
   return (
     <div className="take-test-container">
+      <AppbarTest testType = {testType}
+      selectedOption = {selectedOption} />
+
       <h2 className="take-test-heading">Take a New Test</h2>
       <div className="take-test-radio-group">
         <label className="take-test-radio-label">

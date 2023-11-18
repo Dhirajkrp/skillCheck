@@ -34,7 +34,10 @@ function Test() {
   }, []);
 
   const numQuestions = state.questions.length;
+  const currentDate = new Date();
 
+  // Format the date as needed
+  const formattedDate = currentDate.toDateString();
   return (
     <>
       {/* the loader component will be displayed when we fetch the data from the database */}
@@ -51,9 +54,13 @@ function Test() {
           <div className="content">
             <div className="appbar">
               <AppbarTest
-                dispatch={dispatch}
+                
+                formattedDate = {formattedDate}
                 secondsRemaining={state.secondsRemaining}
+                dispatch={dispatch}
+
               />
+              <h3>{formattedDate}</h3>
             </div>
             <div className="main">
               <QuestionCard

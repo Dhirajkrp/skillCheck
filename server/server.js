@@ -10,7 +10,7 @@ const questionRoutes = require("./routes/questionRoutes");
 const languageRoutes = require("./routes/languageRoutes");
 const companyRoutes = require("./routes/companyRoutes");
 const userRoutes = require("./routes/userRoutes");
-
+const reportRoutes=require("./routes/reportRoutes");
 const path = require("path");
 
 // applying middlewares
@@ -34,6 +34,7 @@ app.use("/api/languages", languageRoutes);
 app.use("/api/companies", companyRoutes);
 
 app.use("/api/users", userRoutes);
+app.use("/api/report",reportRoutes);
 
 const start = async () => {
   try {
