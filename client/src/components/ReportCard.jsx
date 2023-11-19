@@ -11,7 +11,7 @@ export function ReportCard({ name, date, score }) {
       </div>
       <div className="card-info">
         <h3>{name}</h3>
-        <p>Date: {date}</p>
+        <p>Date: {new Date(date).toLocaleDateString("en-US")}</p>
         <h5>Score : {score}</h5>
       </div>
     </div>

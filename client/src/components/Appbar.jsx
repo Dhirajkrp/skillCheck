@@ -4,7 +4,7 @@ import "../css/appbar.css";
 
 function Appbar() {
   const { user } = useUser();
-  const name = user.name || "user";
+  const name = user?.name || "user";
   return (
     <>
       <span>{new Date().toLocaleDateString("en-US")}</span>

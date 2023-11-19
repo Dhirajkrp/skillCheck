@@ -1,11 +1,12 @@
-import React, { createContext } from "react";
-import { Outlet } from "react-router-dom";
+import React, { createContext, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import Appbar from "../components/Appbar";
 import Sidebar from "../components/Sidebar";
 import { useUser } from "../context/userContext";
 
 function UserRoutes() {
   const { user } = useUser();
+  const navigate = useNavigate();
   const routes = [
     {
       name: "Dashboard",
@@ -27,7 +28,17 @@ function UserRoutes() {
       name: "Take a Test",
       path: "/user/take-test",
     },
+    {
+      name: "Logout",
+      path: "/logout",
+    },
   ];
+
+  useEffect(() => {
+    if (localStorage.getItem("user") === null) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <>
@@ -38,7 +49,7 @@ function UserRoutes() {
 
         <div className="content">
           <div className="appbar">
-            <Appbar userName={user?.name} />
+            <Appbar />
           </div>
 
           <div className="main">

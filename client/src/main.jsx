@@ -41,6 +41,7 @@ import TakeTest from "./pages/userPages/TakeTest.jsx";
 import Test from "./pages/userPages/Tests.jsx";
 import { UserProvider } from "./context/userContext.jsx";
 import TestReport from "./components/test-components/TestReport.jsx";
+import Logout from "./pages/Logout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -54,6 +55,7 @@ const router = createBrowserRouter(
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/our-team" element={<OurTeam />} />
       <Route path="/test" element={<Test />} />
+      <Route path="/logout" element={<Logout />} />
       <Route path="/user" element={<UserRoutes />}>
         <Route path="" element={<Dashboard />} />
         <Route path="languages" element={<Languages />} />
