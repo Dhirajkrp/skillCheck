@@ -42,6 +42,7 @@ import Test from "./pages/userPages/Tests.jsx";
 import { UserProvider } from "./context/userContext.jsx";
 import TestReport from "./components/test-components/TestReport.jsx";
 import Logout from "./pages/Logout.jsx";
+import AddLanguage from "./pages/editorPages/AddLanguage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -69,7 +70,7 @@ const router = createBrowserRouter(
 
       <Route path="/editor" element={<EditorLayout />}>
         <Route path="" element={<EditorDashboard />} />
-        <Route path="languages" element={<EditLanguages />} />
+        <Route path="languages" element={<AddLanguage />} />
         <Route path="companies" element={<EditCompanies />} />
         <Route path="questions" element={<EditQuestions />} />
         <Route path="addQuestion" element={<AddQuestion />} />
