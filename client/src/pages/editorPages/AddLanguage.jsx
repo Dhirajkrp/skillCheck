@@ -1,26 +1,73 @@
 import React, { useState } from "react";
+import FaqCard from "../../components/FaqCard";
+import ResourceCard from "../../components/ResourceCard";
 import TopicCard from "../../components/TopicCard";
 
 function AddLanguage() {
+  const [tempId, setTempId] = useState(101);
   const [langName, setLangName] = useState("");
   const [langImage, setLangImage] = useState("");
-  const [topics, setTopics] = useState(["topic 1", "topic 2"]);
+  const [topics, setTopics] = useState([
+    {
+      placeholder: "Add new topic",
+      value: "",
+      id: 100,
+      link: "",
+      setValue(data) {
+        this.value = data;
+      },
+      setResource(data) {
+        this.link = data;
+      },
+    },
+  ]);
 
-  // const topicsList = document.querySelector('.topics-list');
-  // const addNewTopic = ()=>{
-  //     const newTopic = document.createElement('input');
-  //     topicsList.appendChild(newTopic , 'beforeend');
-  // }
+  const [faq, setFaq] = useState([]);
+
+  function addFaq() {
+    setTempId((prev) => prev + 1);
+    const newFaq = {
+      question: "",
+      answer: "",
+      id: tempId,
+      setQuestion(data) {
+        this.question = data;
+      },
+      setAnswer(data) {
+        this.answer = data;
+      },
+    };
+
+    setFaq([...faq, newFaq]);
+  }
+
+  function removeFaq(faqId) {
+    const filteredFaq = faq.filter((f) => f.id !== faqId);
+    setFaq(filteredFaq);
+  }
 
   const addTopic = () => {
-    setTopics([...topics, "new Topic"]);
+    setTempId((prev) => prev + 1);
+    const newTopic = {
+      placeholder: "Add new topic",
+      value: "",
+      id: tempId + 1,
+      link: "",
+      setValue(data) {
+        this.value = data;
+      },
+      setResource(data) {
+        this.link = data;
+      },
+    };
+    setTopics([...topics, newTopic]);
   };
 
-  const removeTopic = (target) => {
-    console.log(`removing ${target}`);
-    const updatedTopics = topics.filter((topic) => topic !== target);
+  const removeTopic = (targetId) => {
+    const updatedTopics = topics.filter((topic) => topic.id !== targetId);
     setTopics(updatedTopics);
   };
+
   return (
     <form action="" onSubmit={(e) => e.preventDefault()}>
       <div className="input-container">
@@ -43,15 +90,40 @@ function AddLanguage() {
           onChange={(e) => setLangImage(e.target.value)}
         />
       </div>
-      //topics for the language.
+
       <div className="topics-section">
         <h5>Add Topics For the language:</h5>
         <div className="topics-list">
           {topics.map((topic) => {
-            return <TopicCard value={topic} removeTopic={removeTopic} />;
+            return (
+              <TopicCard
+                topic={topic}
+                removeTopic={removeTopic}
+                key={topic.id}
+              />
+            );
           })}
         </div>
         <button onClick={() => addTopic()}> Add Topic+</button>
+      </div>
+
+      <div className="topics-section">
+        <h5>Add Resources for the topic</h5>
+        <div className="topics-list">
+          {topics.map((topic) => {
+            return <ResourceCard topic={topic} key={topic.id} />;
+          })}
+        </div>
+      </div>
+
+      <div className="topics-section">
+        <h5>Frequenlty Asked Questions:</h5>
+        <div className="topics-list">
+          {faq.map((f) => {
+            return <FaqCard faq={f} key={f.id} removeFaq={removeFaq} />;
+          })}
+        </div>
+        <button onClick={() => addFaq()}> + Add FAQ</button>
       </div>
     </form>
   );

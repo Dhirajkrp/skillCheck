@@ -1,10 +1,16 @@
 import React from "react";
 
-function TopicCard({ value, removeTopic }) {
+function TopicCard({ topic, removeTopic }) {
   return (
     <div className="topic-item">
-      <input type="text" name={value} id="" value={value} />
-      <button onClick={() => removeTopic(value)}> remove</button>
+      <input
+        type="text"
+        id={topic.id}
+        topic={topic.value}
+        placeholder={topic.placeholder}
+        onChange={(e) => topic.setValue(e.target.value)}
+      />
+      <button onClick={() => removeTopic(topic.id)}> remove</button>
     </div>
   );
 }

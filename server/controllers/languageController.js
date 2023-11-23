@@ -10,7 +10,7 @@ status:
 */
 const getAllLanguages = async (req, res) => {
   try {
-    const result = await Language.find({});
+    const result = await Language.find({}, "_id name");
     return res.status(200).json(result);
   } catch (err) {
     console.log(err);

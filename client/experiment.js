@@ -2,13 +2,14 @@ const questions = [
   {
     id: 1,
     name: "dhiraj",
+    setName(newName) {
+      this.name = newName;
+    },
   },
 ];
 
 questions.forEach((ques) => {
-  if (ques.id === 1) {
-    ques.name = "ram";
-  }
+  ques.setName("ram");
 });
 
 console.log(questions);
