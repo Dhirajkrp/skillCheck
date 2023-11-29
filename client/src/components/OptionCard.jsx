@@ -11,7 +11,10 @@ function OptionCard({ option, removeOption }) {
         onChange={(e) => option.setValue(e.target.value)}
       />
 
-      <button onClick={() => removeOption(option.id)}> remove</button>
+      <button className="close-btn" onClick={() => removeOption(option.id)}>
+        {" "}
+        X
+      </button>
     </div>
   );
 }

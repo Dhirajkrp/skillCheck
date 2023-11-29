@@ -1,0 +1,117 @@
+.content-box {
+  width: 100%;
+
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  min-height: fit-content;
+}
+
+.language-container {
+  margin: 20vh auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  row-gap: 2em;
+}
+.language-container > h4 {
+  text-align: center;
+  color: var(--color-dark);
+}
+
+.language-container > select {
+  padding: 0.25em 1.25em;
+  font-size: 18px;
+}
+
+.language-container > button {
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 90%;
+}
+
+.question-info {
+  width: 100%;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+.options-section,
+.topics-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  align-items: flex-start;
+}
+.options-list {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+.topics-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 1em;
+  column-gap: 1em;
+}
+
+.topic-item > label {
+  width: 18em;
+  padding: 0.3em 0.5em;
+  border-radius: 1em;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 16px;
+  text-align: center;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  column-gap: 0.2em;
+}
+
+.topic-item > input[type="checkbox"] {
+  display: none;
+}
+
+.topic-item > .topic-selected {
+  background-color: var(--color-success);
+  color: var(--text-light-primary);
+  border: 2px solid var(--text-light-primary);
+}
+.close-btn {
+  padding: 0.25em;
+  height: 24px;
+  aspect-ratio: 1;
+  text-align: center;
+  color: var(--color-danger);
+  background-color: transparent;
+  border: 2px solid var(--color-danger);
+  border-radius: 0.3em;
+}
+
+.close-btn:hover {
+  background-color: var(--color-danger);
+  color: white;
+}
+
+.cta-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-container > button {
+  margin-block: 2em;
+  width: 50%;
+  text-align: center;
+}
