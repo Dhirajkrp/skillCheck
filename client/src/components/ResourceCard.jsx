@@ -6,7 +6,7 @@ function ResourceCard({ topic }) {
       <input type="text" topic={topic.value} value={topic.value} disabled />
       <input
         type="text"
-        placeholder="add a resource"
+        placeholder="Resource Link..."
         onChange={(e) => topic.setResource(e.target.value)}
       />
     </div>

@@ -43,6 +43,7 @@ import { UserProvider } from "./context/userContext.jsx";
 import TestReport from "./components/test-components/TestReport.jsx";
 import Logout from "./pages/Logout.jsx";
 import AddLanguage from "./pages/editorPages/AddLanguage.jsx";
+import EditorLanguages from "./pages/editorPages/EditorLanguages.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -70,7 +71,9 @@ const router = createBrowserRouter(
 
       <Route path="/editor" element={<EditorLayout />}>
         <Route path="" element={<EditorDashboard />} />
-        <Route path="languages" element={<AddLanguage />} />
+        <Route path="languages" element={<EditorLanguages />} />
+        <Route path="languages/:langId" element={<EditLanguages />} />
+        <Route path="languages/add" element={<AddLanguage />} />
         <Route path="companies" element={<EditCompanies />} />
         <Route path="questions" element={<EditQuestions />} />
         <Route path="addQuestion" element={<AddQuestion />} />

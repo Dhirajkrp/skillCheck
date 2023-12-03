@@ -91,6 +91,9 @@ h1 {
 .btn:hover {
   opacity: 0.9;
 }
+.btn > a {
+  color: white;
+}
 
 .question-index-btn {
   all: unset;

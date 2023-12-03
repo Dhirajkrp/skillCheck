@@ -3,6 +3,8 @@ import FaqCard from "../../components/FaqCard";
 import ResourceCard from "../../components/ResourceCard";
 import TopicCard from "../../components/TopicCard";
 
+import "../../css/AddLanguage.css";
+
 function AddLanguage() {
   const [tempId, setTempId] = useState(101);
   const [langName, setLangName] = useState("");
@@ -70,25 +72,33 @@ function AddLanguage() {
 
   return (
     <form action="" onSubmit={(e) => e.preventDefault()}>
-      <div className="input-container">
-        <label htmlFor="language-name">Enter the language Name</label>
-        <input
-          type="text"
-          name="language-name"
-          id="language-name"
-          value={langName}
-          onChange={(e) => setLangName(e.target.value)}
-        />
-      </div>
-      <div className="input-container">
-        <label htmlFor="language-image">Enter the image link</label>
-        <input
-          type="text"
-          name="language-image"
-          id="language-image"
-          value={langImage}
-          onChange={(e) => setLangImage(e.target.value)}
-        />
+      <div className="language-input-header">
+        <div className=" input-image-container">
+          <div className="image-placeholder">
+            <img src={langImage} />
+          </div>
+        </div>
+
+        <div className=" input-name-container">
+          <label htmlFor="language-name">Language Name: </label>
+          <input
+            type="text"
+            name="language-name"
+            id="language-name"
+            value={langName}
+            onChange={(e) => setLangName(e.target.value)}
+            placeholder="Eg: javascript"
+          />
+          <label htmlFor="language-image">Image Link: </label>
+          <input
+            type="text"
+            name="language-image"
+            id="language-image"
+            value={langImage}
+            placeholder="Eg: https://nodejs.org/static/images/logo.svg"
+            onChange={(e) => setLangImage(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="topics-section">
@@ -104,7 +114,10 @@ function AddLanguage() {
             );
           })}
         </div>
-        <button onClick={() => addTopic()}> Add Topic+</button>
+        <button onClick={() => addTopic()} className="btn btn-primary">
+          {" "}
+          Add Topic+
+        </button>
       </div>
 
       <div className="topics-section">
@@ -116,9 +129,9 @@ function AddLanguage() {
         </div>
       </div>
 
-      <div className="topics-section">
+      <div className="faq-section">
         <h5>Frequenlty Asked Questions:</h5>
-        <div className="topics-list">
+        <div className="faq-list">
           {faq.map((f) => {
             return <FaqCard faq={f} key={f.id} removeFaq={removeFaq} />;
           })}
