@@ -91,7 +91,7 @@ input:focus {
 }
 
 .faq-item {
-  background-color: #999;
+  background-color: rgb(239, 231, 255);
   padding-block: 1em;
   display: flex;
   flex-direction: column;

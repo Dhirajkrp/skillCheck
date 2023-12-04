@@ -3,6 +3,8 @@ import FaqCard from "../../components/FaqCard";
 import ResourceCard from "../../components/ResourceCard";
 import TopicCard from "../../components/TopicCard";
 
+import axios from "axios";
+
 import "../../css/AddLanguage.css";
 
 function AddLanguage() {
@@ -68,6 +70,33 @@ function AddLanguage() {
   const removeTopic = (targetId) => {
     const updatedTopics = topics.filter((topic) => topic.id !== targetId);
     setTopics(updatedTopics);
+  };
+
+  const handleSubmit = () => {
+    const newLanguage = {
+      name: langName,
+      image: langImage,
+      topics: topics.map((topic) => topic.value),
+      resources: topics.map((topic) => {
+        return { name: topic.value, link: topic.link };
+      }),
+      faq: faq.map((f) => {
+        return { question: f.question, answer: f.answer };
+      }),
+    };
+
+    console.log(newLanguage);
+
+    //adding the new language in the database.
+
+    axios
+      .post("http://localhost:3500/api/languages", newLanguage)
+      .then((res) => {
+        if (res.status === 201) {
+          alert("New Language added to the database");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -137,6 +166,11 @@ function AddLanguage() {
           })}
         </div>
         <button onClick={() => addFaq()}> + Add FAQ</button>
+      </div>
+      <div className="cta-container">
+        <button className="btn btn-primary" onClick={() => handleSubmit()}>
+          Add Language
+        </button>
       </div>
     </form>
   );

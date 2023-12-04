@@ -72,7 +72,6 @@ function MainPage() {
           src="https://avatars.githubusercontent.com/u/1261931?s=280&v=4"
           className="CompImage"
         />
-        {/* <img src="https://pbs.twimg.com/profile_images/1547577387596288003/daCjhjv1_400x400.jpg" className="CompImage"/> */}
       </div>
       <div id="Latest">
         <div id="AlignedImg">
