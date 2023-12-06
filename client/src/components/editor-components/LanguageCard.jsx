@@ -13,7 +13,7 @@ export default function LanguageCard({ name, img, _id, topics }) {
       </div>
       <div className="card-buttons">
         <button className="study-material">
-          <Link to={`/editor/language/${_id}`} className="study-material">
+          <Link to={`/editor/languages/${_id}`} className="study-material">
             Edit Language
           </Link>
         </button>

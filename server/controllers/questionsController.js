@@ -87,7 +87,6 @@ const getQuestionsByLanguage = async (req, res) => {
     return res.status(400).json({ message: "language required" });
   }
   try {
-    console.log(language);
     const result = await Question.find({ language: language });
     return res.status(200).json(result);
   } catch (err) {
