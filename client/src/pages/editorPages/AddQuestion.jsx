@@ -164,10 +164,10 @@ function AddQuestion() {
 
           <div className="topics-section">
             <h5> Select Topics which are realated to the question:</h5>
-            <div className="topics-list">
+            <div className="add-question-topics-list">
               {tags.map((tag) => {
                 return (
-                  <div key={tag} className="topic-item">
+                  <div key={tag} className="add-question-topic-item">
                     <input
                       type="checkbox"
                       name="tag"

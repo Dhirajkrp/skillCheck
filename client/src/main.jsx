@@ -32,7 +32,7 @@ import Report from "./pages/userPages/Report.jsx";
 import EditorDashboard from "./pages/editorPages/EditorDashboard.jsx";
 import EditCompanies from "./pages/editorPages/EditCompanies.jsx";
 import EditLanguages from "./pages/editorPages/EditLanguages";
-import EditQuestions from "./pages/editorPages/EditQuestions";
+import Questions from "./pages/editorPages/Questions";
 import AddQuestion from "./pages/editorPages/AddQuestion";
 
 import UserRoutes from "./layouts/UserLayout.jsx";
@@ -44,6 +44,7 @@ import TestReport from "./components/test-components/TestReport.jsx";
 import Logout from "./pages/Logout.jsx";
 import AddLanguage from "./pages/editorPages/AddLanguage.jsx";
 import EditorLanguages from "./pages/editorPages/EditorLanguages.jsx";
+import QuestionList from "./pages/editorPages/QuestionList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -75,7 +76,9 @@ const router = createBrowserRouter(
         <Route path="languages/:langId" element={<EditLanguages />} />
         <Route path="languages/add" element={<AddLanguage />} />
         <Route path="companies" element={<EditCompanies />} />
-        <Route path="questions" element={<EditQuestions />} />
+        <Route path="questions" element={<Questions />} />
+        <Route path="questions/:langId" element={<QuestionList />} />
+
         <Route path="addQuestion" element={<AddQuestion />} />
       </Route>
     </>
