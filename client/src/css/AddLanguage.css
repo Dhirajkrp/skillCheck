@@ -56,7 +56,7 @@ input:focus {
 .image-placeholder > img {
   height: 100%;
   width: 100%;
-  background-size: 100% 100%;
+  background-size: contain;
   background-position: center;
   /* background-color: rgb(182 140 255);
   background-blend-mode: multiply; */
