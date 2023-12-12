@@ -30,7 +30,9 @@ import Report from "./pages/userPages/Report.jsx";
 
 //editor routes
 import EditorDashboard from "./pages/editorPages/EditorDashboard.jsx";
-import EditCompanies from "./pages/editorPages/EditCompanies.jsx";
+import EditorCompanies from "./pages/editorPages/Companies.jsx";
+import EditCompanies from "./pages/editorPages/EditCompanies";
+import AddCompany from "./pages/editorPages/AddCompany";
 import EditLanguages from "./pages/editorPages/EditLanguages";
 import Questions from "./pages/editorPages/Questions";
 import AddQuestion from "./pages/editorPages/AddQuestion";
@@ -43,7 +45,7 @@ import { UserProvider } from "./context/userContext.jsx";
 import TestReport from "./components/test-components/TestReport.jsx";
 import Logout from "./pages/Logout.jsx";
 import AddLanguage from "./pages/editorPages/AddLanguage.jsx";
-import EditorLanguages from "./pages/editorPages/EditorLanguages.jsx";
+import EditorLanguages from "./pages/editorPages/Languages.jsx";
 import QuestionList from "./pages/editorPages/QuestionList.jsx";
 
 const router = createBrowserRouter(
@@ -75,7 +77,9 @@ const router = createBrowserRouter(
         <Route path="languages" element={<EditorLanguages />} />
         <Route path="languages/:langId" element={<EditLanguages />} />
         <Route path="languages/add" element={<AddLanguage />} />
-        <Route path="companies" element={<EditCompanies />} />
+        <Route path="companies" element={<EditorCompanies />} />
+        <Route path="companies/:companyID" element={<EditCompanies />} />
+        <Route path="companies/add" element={<AddCompany />} />
         <Route path="questions" element={<Questions />} />
         <Route path="questions/:langId" element={<QuestionList />} />
 

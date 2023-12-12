@@ -32,6 +32,19 @@ function CompanyGuide() {
           <p>Total Topics: {company.topics?.length}</p>
         </div>
       </div>
+      <div className="description">
+        <p> {company.description} </p>
+        <br />
+        <p>
+          {" "}
+          <strong> Profiles: </strong>
+        </p>
+        <ul>
+          {company?.profile?.map((p) => (
+            <li> {p} </li>
+          ))}
+        </ul>
+      </div>
 
       <h3>Topics To cover</h3>
       <table>
