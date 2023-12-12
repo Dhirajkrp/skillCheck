@@ -160,6 +160,13 @@ const createQuestion = async (req, res) => {
   return res.status(201).json(newQuestion);
 };
 
+const insertMany = (req, res) => {
+  let { questions } = req.body;
+  Question.insertMany(questions)
+    .then(() => res.sendStatus(201))
+    .catch((err) => res.sendStatus(500));
+};
+
 /*
 function to delete a question :
 parameters :
@@ -283,4 +290,5 @@ module.exports = {
   updateQuestion,
   getQuestionsByTag,
   getQuestionsByLanguage,
+  insertMany,
 };

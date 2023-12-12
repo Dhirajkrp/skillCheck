@@ -7,6 +7,7 @@ const {
   updateQuestion,
   getQuestionsByTag,
   getQuestionsByLanguage,
+  insertMany,
 } = require("../controllers/questionsController");
 const router = express.Router();
 // / api/questtion/
@@ -23,5 +24,7 @@ router
 router.route("/tag/:tagName").get(getQuestionsByTag);
 
 router.route("/lang/:language").get(getQuestionsByLanguage);
+
+router.route("/insertMany").post(insertMany);
 
 module.exports = router;
