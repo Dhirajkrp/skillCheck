@@ -1,9 +1,10 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import Appbar from "../components/Appbar";
 import Sidebar from "../components/Sidebar";
 
 function UserRoutes() {
+  const navigate = useNavigate();
   const routes = [
     {
       name: "Dashboard",
@@ -26,7 +27,11 @@ function UserRoutes() {
       path: "/editor/addQuestion",
     },
   ];
-
+  useEffect(() => {
+    if (localStorage.getItem("user") === null) {
+      navigate("/");
+    }
+  }, []);
   return (
     <>
       <div className="page-layout">

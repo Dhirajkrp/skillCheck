@@ -14,6 +14,8 @@ import {
 // public route imports
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import AdminLogin from "./pages/AdminLogin";
+import EditorLogin from "./pages/EditorLogin";
 import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
@@ -39,6 +41,8 @@ import AddQuestion from "./pages/editorPages/AddQuestion";
 
 import UserRoutes from "./layouts/UserLayout.jsx";
 import EditorLayout from "./layouts/EditorLayout.jsx";
+import AdminLayout from "./layouts/AdminLayout.jsx";
+
 import TakeTest from "./pages/userPages/TakeTest.jsx";
 import Test from "./pages/userPages/Tests.jsx";
 import { UserProvider } from "./context/userContext.jsx";
@@ -48,6 +52,9 @@ import AddLanguage from "./pages/editorPages/AddLanguage.jsx";
 import EditorLanguages from "./pages/editorPages/Languages.jsx";
 import QuestionList from "./pages/editorPages/QuestionList.jsx";
 
+import AdminDashboard from "./pages/adminPages/AdminDashboard";
+import LanguageReview from "./pages/adminPages/LanguageReview.jsx";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -55,6 +62,8 @@ const router = createBrowserRouter(
 
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/adminLogin" element={<AdminLogin />} />
+      <Route path="/editorLogin" element={<EditorLogin />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/contact-us" element={<ContactUs />} />
@@ -84,6 +93,22 @@ const router = createBrowserRouter(
         <Route path="questions/:langId" element={<QuestionList />} />
 
         <Route path="addQuestion" element={<AddQuestion />} />
+      </Route>
+
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route path="" element={<AdminDashboard />} />
+        <Route path="languages" element={<EditorLanguages />} />
+        <Route path="languages/:langId" element={<EditLanguages />} />
+        <Route path="languages/add" element={<AddLanguage />} />
+        <Route path="companies" element={<EditorCompanies />} />
+        <Route path="companies/:companyID" element={<EditCompanies />} />
+        <Route path="companies/add" element={<AddCompany />} />
+        <Route path="questions" element={<Questions />} />
+        <Route path="questions/:langId" element={<QuestionList />} />
+
+        <Route path="addQuestion" element={<AddQuestion />} />
+
+        <Route path="languageReview" element={<LanguageReview />}></Route>
       </Route>
     </>
   )

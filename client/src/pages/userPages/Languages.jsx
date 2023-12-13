@@ -1,6 +1,7 @@
 import "../../css/company.css";
 import { useEffect, useState } from "react";
 import { LangCard } from "../../components/LangCard";
+import Loader from "../../components/test-components/Loader";
 
 export default function Languages() {
   const [data, setData] = useState([]);
@@ -19,16 +20,19 @@ export default function Languages() {
   }, []);
 
   return (
-    <div className="lang-cards">
-      {data.map((e) => (
-        <LangCard
-          key={e._id}
-          name={e.name}
-          img={e.image}
-          langId={e._id}
-          totalTopics={e.topics.length}
-        />
-      ))}
+    <div>
+      {data.length == 0 && <Loader />}
+      <div className="lang-cards">
+        {data.map((e) => (
+          <LangCard
+            key={e._id}
+            name={e.name}
+            img={e.image}
+            langId={e._id}
+            totalTopics={e.topics.length}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { useUser } from "../../context/userContext";
 
 import axios from "axios";
 import { ReportCard } from "../../components/ReportCard";
+import Loader from "../../components/test-components/Loader";
 function Report() {
   const { user } = useUser();
 
@@ -13,7 +14,7 @@ function Report() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3500/api/report/all/${userID}`)
+      .get(`http://localhost:3500/api/reports/all/${userID}`)
       .then((res) => {
         setReports(res.data);
       })
@@ -34,15 +35,16 @@ function Report() {
             date={report.date}
             score={report.score}
             totalQuestions={report.totalQuestions}
+            key={report.date}
           />
         ))}
       </div>
     );
   } else {
     return (
-      <h3>
-        Looks Like You have not given any tests yet, please give a test first!
-      </h3>
+      <div>
+        <Loader />
+      </div>
     );
   }
 }

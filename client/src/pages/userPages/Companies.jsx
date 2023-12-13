@@ -1,6 +1,7 @@
 import "../../css/company.css";
 import { useEffect, useState } from "react";
 import { CompCard } from "../../components/CompCard";
+import Loader from "../../components/test-components/Loader";
 
 function Companies() {
   const [data, setData] = useState([]);
@@ -20,6 +21,7 @@ function Companies() {
 
   return (
     <div>
+      {data.length == 0 && <Loader />}
       <div className="lang-cards">
         {data.map((e) => (
           <CompCard

@@ -37,7 +37,7 @@ app.use("/api/companies", companyRoutes);
 
 app.use("/api/users", userRoutes);
 
-app.use("/api/report", reportRoutes);
+app.use("/api/reports", reportRoutes);
 
 // api routes end
 
