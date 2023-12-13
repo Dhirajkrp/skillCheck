@@ -10,7 +10,7 @@ function Report() {
   const { user } = useUser();
 
   const userID = user._id;
-  const [reports, setReports] = useState([]);
+  const [reports, setReports] = useState(null);
 
   useEffect(() => {
     axios
@@ -18,7 +18,12 @@ function Report() {
       .then((res) => {
         setReports(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setReports([]);
+        }
+        setReports([]);
+      });
   }, []);
 
   const navigate = useNavigate();
@@ -26,7 +31,7 @@ function Report() {
     navigate("/");
   }
 
-  if (reports.length > 0) {
+  if (reports !== null) {
     return (
       <div className="card-container">
         {reports.map((report) => (
@@ -38,6 +43,12 @@ function Report() {
             key={report.date}
           />
         ))}
+      </div>
+    );
+  } else if (reports !== null && reports.length === 0) {
+    return (
+      <div>
+        <h3>Looks Like You have not given any tests yet!</h3>
       </div>
     );
   } else {

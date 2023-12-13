@@ -105,72 +105,73 @@ function AddCompany() {
 
   return (
     <form action="" onSubmit={(e) => e.preventDefault()}>
-      <div className="language-input-header">
-        <div className=" input-image-container">
-          <div className="image-placeholder">
-            <img src={compImage} />
+      <div className="input-section">
+        <div className="language-input-header">
+          <div className=" input-image-container">
+            <div className="image-placeholder">
+              <img src={compImage} />
+            </div>
+          </div>
+
+          <div className=" input-name-container">
+            <label htmlFor="language-name">Company Name: </label>
+            <input
+              type="text"
+              name="language-name"
+              id="language-name"
+              value={compName}
+              onChange={(e) => setCompName(e.target.value)}
+              placeholder="Eg: javascript"
+            />
+            <label htmlFor="language-image">Image Link: </label>
+            <input
+              type="text"
+              name="language-image"
+              id="language-image"
+              value={compImage}
+              placeholder="Eg: https://nodejs.org/static/images/logo.svg"
+              onChange={(e) => setCompImage(e.target.value)}
+            />
           </div>
         </div>
 
-        <div className=" input-name-container">
-          <label htmlFor="language-name">Company Name: </label>
+        <div className="input-container">
+          <label htmlFor="company-description">Description:</label>
+
           <input
             type="text"
-            name="language-name"
-            id="language-name"
-            value={compName}
-            onChange={(e) => setCompName(e.target.value)}
-            placeholder="Eg: javascript"
-          />
-          <label htmlFor="language-image">Image Link: </label>
-          <input
-            type="text"
-            name="language-image"
-            id="language-image"
-            value={compImage}
-            placeholder="Eg: https://nodejs.org/static/images/logo.svg"
-            onChange={(e) => setCompImage(e.target.value)}
+            name="company-description"
+            id="company-description"
+            value={description}
+            placeholder="Eg:This company is a software tech company, which deals with web and app development..."
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-      </div>
 
-      <div>
-        <label htmlFor="company-description">Description:</label>
+        <div className="input-container">
+          <label htmlFor="company-description">Website Link:</label>
 
-        <input
-          type="text"
-          name="company-description"
-          id="company-description"
-          value={description}
-          placeholder="Eg:This company is a software tech company, which deals with web and app development..."
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
+          <input
+            type="text"
+            name="company-link"
+            id="company-link"
+            value={websiteLink}
+            placeholder="Eg:www.google.com"
+            onChange={(e) => setWebsiteLink(e.target.value)}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="company-description">Website Link:</label>
-
-        <input
-          type="text"
-          name="company-link"
-          id="company-link"
-          value={websiteLink}
-          placeholder="Eg:www.google.com"
-          onChange={(e) => setWebsiteLink(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="company-profiles">Profiles:</label>
-
-        <input
-          type="text"
-          name="company-profiles"
-          id="company-profiles"
-          value={profiles}
-          placeholder="Separate multiple profiles with comma: eg  SDE , QE..."
-          onChange={(e) => setProfiles(e.target.value.split(","))}
-        />
+        <div className="input-container">
+          <label htmlFor="company-profiles">Profiles:</label>
+          <input
+            type="text"
+            name="company-profiles"
+            id="company-profiles"
+            value={profiles}
+            placeholder="Separate multiple profiles with comma: eg  SDE , QE..."
+            onChange={(e) => setProfiles(e.target.value.split(","))}
+          />
+        </div>
       </div>
       <div className="topics-section">
         <h5>Add Topics For the language:</h5>
@@ -207,7 +208,9 @@ function AddCompany() {
             return <FaqCard faq={f} key={f.id} removeFaq={removeFaq} />;
           })}
         </div>
-        <button onClick={() => addFaq()}> + Add FAQ</button>
+        <button onClick={() => addFaq()} className="btn btn-primary">
+          + Add FAQ
+        </button>
       </div>
       <div className="cta-container">
         <button className="btn btn-primary" onClick={() => handleSubmit()}>

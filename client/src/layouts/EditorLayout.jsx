@@ -26,6 +26,10 @@ function UserRoutes() {
       name: "Add a  Question",
       path: "/editor/addQuestion",
     },
+    {
+      name: "Logout",
+      path: "/logout",
+    },
   ];
   useEffect(() => {
     if (localStorage.getItem("user") === null) {

@@ -101,35 +101,36 @@ function AddLanguage() {
 
   return (
     <form action="" onSubmit={(e) => e.preventDefault()}>
-      <div className="language-input-header">
-        <div className=" input-image-container">
-          <div className="image-placeholder">
-            <img src={langImage} />
+      <div className="input-section">
+        <div className="language-input-header">
+          <div className=" input-image-container">
+            <div className="image-placeholder">
+              <img src={langImage} />
+            </div>
+          </div>
+
+          <div className=" input-name-container">
+            <label htmlFor="language-name">Language Name: </label>
+            <input
+              type="text"
+              name="language-name"
+              id="language-name"
+              value={langName}
+              onChange={(e) => setLangName(e.target.value)}
+              placeholder="Eg: javascript"
+            />
+            <label htmlFor="language-image">Image Link: </label>
+            <input
+              type="text"
+              name="language-image"
+              id="language-image"
+              value={langImage}
+              placeholder="Eg: https://nodejs.org/static/images/logo.svg"
+              onChange={(e) => setLangImage(e.target.value)}
+            />
           </div>
         </div>
-
-        <div className=" input-name-container">
-          <label htmlFor="language-name">Language Name: </label>
-          <input
-            type="text"
-            name="language-name"
-            id="language-name"
-            value={langName}
-            onChange={(e) => setLangName(e.target.value)}
-            placeholder="Eg: javascript"
-          />
-          <label htmlFor="language-image">Image Link: </label>
-          <input
-            type="text"
-            name="language-image"
-            id="language-image"
-            value={langImage}
-            placeholder="Eg: https://nodejs.org/static/images/logo.svg"
-            onChange={(e) => setLangImage(e.target.value)}
-          />
-        </div>
       </div>
-
       <div className="topics-section">
         <h5>Add Topics For the language:</h5>
         <div className="topics-list">
@@ -165,7 +166,10 @@ function AddLanguage() {
             return <FaqCard faq={f} key={f.id} removeFaq={removeFaq} />;
           })}
         </div>
-        <button onClick={() => addFaq()}> + Add FAQ</button>
+        <button onClick={() => addFaq()} className="btn btn-primary">
+          {" "}
+          + Add FAQ
+        </button>
       </div>
       <div className="cta-container">
         <button className="btn btn-primary" onClick={() => handleSubmit()}>

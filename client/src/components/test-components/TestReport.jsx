@@ -53,7 +53,7 @@ function TestReport({ questions, testName }) {
 
   async function addReport() {
     axios
-      .post("http://localhost:3500/api/report", newReport)
+      .post("http://localhost:3500/api/reports", newReport)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }

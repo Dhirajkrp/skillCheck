@@ -1,10 +1,29 @@
+.input-section,
+.topics-section {
+  background-color: rgb(232, 252, 255);
+  padding: 1em;
+  border-radius: 2em;
+  margin-bottom: 2em;
+}
+
+.input-section input,
+.topics-section input {
+  padding-inline-end: 1em;
+  flex: 1;
+  border-radius: 0.5em;
+  border: 1px solid #888;
+}
+
+.input-section input:focus,
+.topics-section input:focus {
+  outline: 1px soild #555;
+}
+
 .language-input-header {
   display: flex;
   align-items: center;
   column-gap: 1em;
   justify-content: center;
-  background-color: rgb(232, 252, 255);
-  border-radius: 2em;
   padding-block: 1em;
 }
 
@@ -41,10 +60,10 @@
   flex: 1;
 }
 
-input {
-  padding-inline-end: 1em;
-  flex: 1;
+input + input {
+  margin-left: 1em;
 }
+
 .image-placeholder > img {
   height: 100%;
   width: 100%;
@@ -63,12 +82,14 @@ input {
   display: flex;
   flex-direction: column;
   width: 100%;
+  row-gap: 0.5em;
 }
 
 .topic-item {
   width: 70%;
   display: flex;
   justify-content: space-between;
+  column-gap: 0.5em;
 }
 
 .topics-item > input {
