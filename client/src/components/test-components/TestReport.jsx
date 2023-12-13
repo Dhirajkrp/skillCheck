@@ -35,8 +35,11 @@ function TestReport({ questions, testName }) {
     (ques) => ques.answer === ques.selectedOption
   ).length;
 
-  const percentage = Math.floor((score / questions.length) * 100);
   // saving the report in the database.
+
+  const totalQuestions = questions.length;
+  const percentage = Math.floor((score / totalQuestions) * 100);
+
   const { user } = useUser();
 
   const newReport = {
@@ -44,6 +47,8 @@ function TestReport({ questions, testName }) {
     score: score,
     date: Date.now(),
     name: testName,
+    topics,
+    totalQuestions,
   };
 
   async function addReport() {
@@ -52,7 +57,7 @@ function TestReport({ questions, testName }) {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
-  // addReport();
+  addReport();
 
   return (
     <section>
@@ -67,6 +72,31 @@ function TestReport({ questions, testName }) {
           Percentage: <strong> {percentage} %</strong>
         </span>
       </div>
+      <h3 className="table-heading">Topics</h3>
+      <table>
+        <tr>
+          <th>SNO</th>
+          <th>Topic</th>
+          <th>Total Questions</th>
+          <th>Score</th>
+          <th>Accuracy</th>
+        </tr>
+
+        {topics.map((topic, index) => {
+          return (
+            <tr>
+              <td>{index + 1}</td>
+              <td>{topic.name}</td> <td>{topic.totalQuestions}</td>
+              <td>{topic.totalCorrect}</td>
+              <td>
+                {" "}
+                {Math.floor((topic.totalCorrect / topic.totalQuestions) * 100)}
+                {"%"}
+              </td>
+            </tr>
+          );
+        })}
+      </table>
       <h3 className="table-heading">Questions</h3>
       <table>
         <tr>
@@ -91,25 +121,6 @@ function TestReport({ questions, testName }) {
               >
                 {ques.answer === ques.selectedOption ? "Yes" : "No"}
               </td>
-            </tr>
-          );
-        })}
-      </table>
-      <h3 className="table-heading">Topics</h3>
-      <table>
-        <tr>
-          <th>SNO</th>
-          <th>Topic</th>
-          <th>Total Questions</th>
-          <th>Score</th>
-        </tr>
-
-        {topics.map((topic, index) => {
-          return (
-            <tr>
-              <td>{index + 1}</td>
-              <td>{topic.name}</td> <td>{topic.totalQuestions}</td>
-              <td>{topic.totalCorrect}</td>
             </tr>
           );
         })}

@@ -68,7 +68,7 @@ status:
     400 , bad request , if some values are missing.
 */
 const createReports = async (req, res) => {
-  let { name, date, score, userId } = req.body;
+  let { name, date, score, userId, topics, totalQuestions } = req.body;
   // validating all the input values before adding to the database.
   if (!name) {
     return res.status(400).json({ message: "Name  is required" });
@@ -78,7 +78,7 @@ const createReports = async (req, res) => {
     return res.status(400).json({ message: "date is required" });
   }
 
-  if (!score) {
+  if (!score && score !== 0) {
     return res.status(400).json({ message: "score  is required" });
   }
 
@@ -91,6 +91,8 @@ const createReports = async (req, res) => {
     date,
     score,
     userId,
+    topics,
+    totalQuestions,
   };
 
   const newReports = new Report(data);
@@ -180,7 +182,7 @@ const updateReports = async (req, res) => {
 
   let newReports = {};
   try {
-    newReports = await Reports.findOneAndUpdate(
+    newReports = await Report.findOneAndUpdate(
       { _id: ReportsID },
       updatedReports,
       {

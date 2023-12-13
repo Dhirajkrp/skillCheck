@@ -21,7 +21,13 @@ export default function Languages() {
   return (
     <div className="lang-cards">
       {data.map((e) => (
-        <LangCard key={e._id} name={e.name} img={e.image} langId={e._id} />
+        <LangCard
+          key={e._id}
+          name={e.name}
+          img={e.image}
+          langId={e._id}
+          totalTopics={e.topics.length}
+        />
       ))}
     </div>
   );

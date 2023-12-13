@@ -10,7 +10,6 @@ function Companies() {
       try {
         const res = await fetch(`http://localhost:3500/api/companies`);
         const data = await res.json();
-        console.log(data);
         setData(data); // Set the data in the state
       } catch (error) {
         console.log("Error");

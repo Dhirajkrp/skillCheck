@@ -1,4 +1,4 @@
-export function ReportCard({ name, date, score }) {
+export function ReportCard({ name, date, score, totalQuestions }) {
   return (
     <div className="card">
       <div className="card-header">
@@ -12,7 +12,10 @@ export function ReportCard({ name, date, score }) {
       <div className="card-info">
         <h3>{name}</h3>
         <p>Date: {new Date(date).toLocaleDateString("en-US")}</p>
-        <h5>Score : {score}</h5>
+        <h5>
+          Score : {score} / {totalQuestions}
+        </h5>
+        <h5>Percentage : {Math.floor((score / totalQuestions) * 100)}% </h5>
       </div>
     </div>
   );

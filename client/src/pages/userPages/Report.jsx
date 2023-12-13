@@ -16,7 +16,6 @@ function Report() {
       .get(`http://localhost:3500/api/report/all/${userID}`)
       .then((res) => {
         setReports(res.data);
-        console.log(reports);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -26,9 +25,26 @@ function Report() {
     navigate("/");
   }
 
-  return reports.map((report) => (
-    <ReportCard name={report.name} date={report.date} score={report.score} />
-  ));
+  if (reports.length > 0) {
+    return (
+      <div className="card-container">
+        {reports.map((report) => (
+          <ReportCard
+            name={report.name}
+            date={report.date}
+            score={report.score}
+            totalQuestions={report.totalQuestions}
+          />
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <h3>
+        Looks Like You have not given any tests yet, please give a test first!
+      </h3>
+    );
+  }
 }
 
 export default Report;

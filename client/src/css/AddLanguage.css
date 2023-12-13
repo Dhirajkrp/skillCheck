@@ -42,17 +42,9 @@
 }
 
 input {
-  outline: 1px solid #999;
-  border: none;
-  border-radius: 0.2em;
-  color: var(--color-text-dark);
   padding-inline-end: 1em;
   flex: 1;
 }
-input:focus {
-  outline: 1px solid #666;
-}
-
 .image-placeholder > img {
   height: 100%;
   width: 100%;

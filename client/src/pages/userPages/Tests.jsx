@@ -40,6 +40,10 @@ function Test() {
       name: "Take a Test",
       path: "/user/take-test",
     },
+    {
+      name: "Logout",
+      path: "/logout",
+    },
   ];
 
   // defining the api route based on the test information
@@ -50,11 +54,30 @@ function Test() {
     uri = `http://localhost:3500/api/companies/test/${topic}`;
   }
 
+  //shuffling question to generate random questions of size duration.
+  // no. of question will be proportional to the test duration.
+
+  const shuffleQuestion = (questions, size) => {
+    let data = [];
+
+    while (data.length < size) {
+      let randomIndex = Math.floor(Math.random() * questions.length);
+
+      let randomQuestion = questions[randomIndex];
+
+      if (!data.some((ques) => ques._id === randomQuestion._id)) {
+        data.push(randomQuestion);
+      }
+    }
+
+    dispatch({ type: "dataFetched", payload: data });
+  };
+
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
     fetch(uri)
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataFetched", payload: data }))
+      .then((data) => shuffleQuestion(data, testDuration))
       .catch((err) => dispatch({ type: "error" }));
   }, []);
 

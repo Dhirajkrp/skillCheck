@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../css/takeTest.css";
-import AppbarTest from "../../components/test-components/AppbarTest";
+
+import axios from "axios";
 
 function TakeTest() {
   const [testType, setTestType] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [testDuration, setTestDuration] = useState("");
 
-  //databse fetch
-  const languages = ["Java", "SQL", "JavaScript"];
+  const [languages, setLanguages] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3500/api/languages")
+      .then((res) => setLanguages(res.data.map((lang) => lang.name)))
+      .catch((err) => console.log(err));
+  }, []);
+
   const companies = ["GrapeCity", "Cvent", "Nagarro"];
 
   return (
     <div className="take-test-container">
-      {/* <AppbarTest testType = {testType}
-      selectedOption = {selectedOption} /> */}
-
       <h2 className="take-test-heading">Take a New Test</h2>
       <div className="take-test-radio-group">
         <label className="take-test-radio-label">

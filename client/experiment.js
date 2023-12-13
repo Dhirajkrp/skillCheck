@@ -1,15 +1,21 @@
-const questions = [
+const persons = [
   {
-    id: 1,
     name: "dhiraj",
-    setName(newName) {
-      this.name = newName;
-    },
+    age: 24,
+  },
+  {
+    name: "yash",
+    age: 222,
   },
 ];
 
-questions.forEach((ques) => {
-  ques.setName("ram");
-});
-
-console.log(questions);
+if (
+  !persons.includes({
+    name: "dhiraj",
+    age: 24,
+  })
+) {
+  console.log("not present");
+} else {
+  console.log("present");
+}

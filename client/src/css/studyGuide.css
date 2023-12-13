@@ -39,7 +39,3 @@ td > a {
 tr:nth-of-type(2n) {
   background-color: #ddd;
 }
-
-h5 {
-  margin-top: 2em;
-}

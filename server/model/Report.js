@@ -17,6 +17,14 @@ let Report = new Schema({
     type: String,
     required: true,
   },
+  topics: [
+    {
+      name: String,
+      totalQuestions: Number,
+      totalCorrect: Number,
+    },
+  ],
+  totalQuestions: Number,
 
   // Type: {
   //   type: String,

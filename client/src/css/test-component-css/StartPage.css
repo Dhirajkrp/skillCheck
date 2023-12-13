@@ -1,11 +1,26 @@
 .main-container {
-  margin: auto;
-  height: 100vh;
-  width: 100vw;
   display: flex;
-  padding: 5em;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  align-self: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4; /* Light gray background */
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333; /* Dark text color */
+}
+
+.instructions {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.instructions li {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #555; /* Medium gray text color */
 }
